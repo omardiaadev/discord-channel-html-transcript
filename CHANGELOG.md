@@ -3,7 +3,17 @@
 ## WIP
 
 - Implement Discord's new Components V2.
-- Improve embed styling.
+- Implement message formatting inside embeds.
+
+## 3.0.0
+
+### Changed
+
+- Remove the ability to supply Transcript with own TemplateEngine.
+
+### Fixed
+
+- Fix NPE when loading JTE precompiled classes ([#1](https://github.com/skywolfxp/discord-channel-html-transcript/issues/1))
 
 ## 2.0.0
 
