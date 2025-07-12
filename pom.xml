@@ -85,7 +85,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>6.0.0-M1</version>
+      <version>5.13.3</version>
 
       <scope>test</scope>
     </dependency>
@@ -179,17 +179,20 @@
         <groupId>gg.jte</groupId>
         <artifactId>jte-maven-plugin</artifactId>
         <version>${jte.version}</version>
+
         <configuration>
-          <contentType>Html</contentType>
-          <binaryStaticContent>true</binaryStaticContent>
           <sourceDirectory>${project.basedir}/src/main/resources/template</sourceDirectory>
-          <targetDirectory/>
+          <targetDirectory>${project.build.directory}/classes</targetDirectory>
+          <trimControlStructures>true</trimControlStructures>
+          <contentType>Html</contentType>
         </configuration>
+
         <executions>
           <execution>
-            <phase>generate-sources</phase>
+            <phase>process-classes</phase>
+
             <goals>
-              <goal>generate</goal>
+              <goal>precompile</goal>
             </goals>
           </execution>
         </executions>
