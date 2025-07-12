@@ -6,11 +6,11 @@ import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildChannel;
 import org.jetbrains.annotations.NotNull;
 
-import static dev.skywolfxp.transcript.TranscriptTestUtils.AVATAR_URL_BOT;
+import static dev.skywolfxp.transcript.TranscriptMockUtil.AVATAR_URL_BOT;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GuildMockBuilder {
+final class GuildMockBuilder {
   private final Guild guild = mock(Guild.class);
   
   public GuildMockBuilder() {

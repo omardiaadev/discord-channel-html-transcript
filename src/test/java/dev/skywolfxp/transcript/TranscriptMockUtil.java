@@ -14,13 +14,13 @@ import java.time.ZoneOffset;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class TranscriptTestUtils {
-  protected final static String AVATAR_URL_USER =
+final class TranscriptMockUtil {
+  private static final String RICH_CUSTOM_EMOJI = "https://cdn.discordapp.com/emojis/1353135081476329523.webp?";
+  static final String AVATAR_URL_USER =
     "https://cdn.discordapp.com/avatars/974748803305455627/9089cea358d89c0ed9fa2b89c86d33c9.png?";
-  protected final static String AVATAR_URL_BOT =
+  static final String AVATAR_URL_BOT =
     "https://cdn.discordapp.com/avatars/1093684128437764136/3b2cb4620d02fbcae500a447d0c14de9.png?";
-  protected final static String RICH_CUSTOM_EMOJI = "https://cdn.discordapp.com/emojis/1353135081476329523.webp?";
-  protected final static OffsetDateTime TIME = OffsetDateTime.of(2030, 2, 20, 0, 0, 0, 0, ZoneOffset.UTC);
+  static final OffsetDateTime TIME = OffsetDateTime.of(2030, 2, 20, 0, 0, 0, 0, ZoneOffset.UTC);
   
   @NotNull
   public static JDA mockJDA(@NotNull User user) {

@@ -2,16 +2,18 @@ package dev.skywolfxp.transcript;
 
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
+import gg.jte.TemplateException;
 import gg.jte.output.Utf8ByteOutput;
 import gg.jte.resolve.DirectoryCodeResolver;
 import net.dv8tion.jda.api.entities.Guild;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,15 +21,14 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 
-import static org.mockito.Mockito.when;
-
-class TranscriptGeneratorTest {
+class TranscriptMock {
   AutoCloseable autoCloseable;
   
   Path outputDir = Path.of(System.getProperty("java.io.tmpdir")).resolve("discord-channel-html-transcript");
   
-  @Mock
-  Transcript transcript;
+  private TemplateEngine templateEngine;
+  private Utf8ByteOutput utf8ByteOutput;
+  private HashMap<String, Object> params;
   
   @TempDir
   Path tempDir;
@@ -36,9 +37,10 @@ class TranscriptGeneratorTest {
   void setUp() throws IOException {
     autoCloseable = MockitoAnnotations.openMocks(this);
     
-    when(transcript.getTemplateEngine()).thenReturn(
-      TemplateEngine.create(new DirectoryCodeResolver(Path.of("src/main/resources/template")), ContentType.Html));
-    when(transcript.getUtf8ByteOutput()).thenReturn(new Utf8ByteOutput());
+    templateEngine = TemplateEngine.create(
+      new DirectoryCodeResolver(Path.of("src/main/resources/template")), ContentType.Html);
+    utf8ByteOutput = new Utf8ByteOutput();
+    params = new HashMap<>();
     
     if (!Files.exists(outputDir)) {
       Files.createDirectories(outputDir);
@@ -51,22 +53,25 @@ class TranscriptGeneratorTest {
   }
   
   @Test
-  void createTranscript() throws IOException {
-    Guild guild = TranscriptGeneratorTestUtils.createGuild();
+  void render() throws IllegalArgumentException, TemplateException, IOException {
+    Guild guild = TranscriptTestUtil.createGuild();
     
-    HashMap<String, Object> params = new HashMap<>();
-    params.put("textChannel", TranscriptTestUtils.mockTextChannel("discord-channel-html-transcript", guild));
-    params.put("messages", TranscriptGeneratorTestUtils.createMessages(guild));
+    params.put("textChannel", TranscriptMockUtil.mockTextChannel("discord-channel-html-transcript", guild));
+    params.put("messages", TranscriptTestUtil.createMessages(guild));
     params.put("isDev", true);
     
-    transcript.getTemplateEngine().render("template.jte", params, transcript.getUtf8ByteOutput());
+    templateEngine.render("template.jte", params, utf8ByteOutput);
     
-    try (FileOutputStream fileOutputStream = new FileOutputStream(tempDir.resolve("transcript-temp.html").toFile())) {
-      fileOutputStream.write(transcript.getUtf8ByteOutput().toByteArray());
-    }
+    writeToFile(tempDir.resolve("transcript-temp.html").toFile());
     
     Files.copy(
       tempDir.resolve("transcript-temp.html"), outputDir.resolve("transcript.html"),
       StandardCopyOption.REPLACE_EXISTING);
+  }
+  
+  public void writeToFile(@NotNull File file) throws IOException {
+    try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+      fileOutputStream.write(utf8ByteOutput.toByteArray());
+    }
   }
 }

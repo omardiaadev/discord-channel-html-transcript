@@ -7,11 +7,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Random;
 
-import static dev.skywolfxp.transcript.TranscriptTestUtils.TIME;
+import static dev.skywolfxp.transcript.TranscriptMockUtil.TIME;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public final class MessageMockBuilder {
+final class MessageMockBuilder {
   private final Message message = mock(Message.class);
   
   public MessageMockBuilder(@NotNull User author) {
