@@ -31,15 +31,11 @@
   </developers>
 
   <scm>
-    <connection>
-      scm:git:git://github.com/skywolfxp/discord-channel-html-transcript.git
-    </connection>
+    <url>https://github.com/skywolfxp/discord-channel-html-transcript</url>
+    <connection>scm:git:git://github.com/skywolfxp/discord-channel-html-transcript.git</connection>
     <developerConnection>
       scm:git:ssh://git@github.com:skywolfxp/discord-channel-html-transcript.git
     </developerConnection>
-    <url>
-      https://github.com/skywolfxp/discord-channel-html-transcript
-    </url>
   </scm>
 
   <properties>
@@ -54,7 +50,6 @@
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
       <version>5.6.1</version>
-
       <exclusions>
         <exclusion>
           <groupId>club.minnced</groupId>
@@ -78,7 +73,6 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.5.18</version>
-
       <scope>compile</scope>
     </dependency>
 
@@ -86,7 +80,6 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.13.3</version>
-
       <scope>test</scope>
     </dependency>
 
@@ -94,7 +87,6 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <version>5.18.0</version>
-
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -198,6 +190,7 @@
         </executions>
       </plugin>
 
+      <!-- Dismiss https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
