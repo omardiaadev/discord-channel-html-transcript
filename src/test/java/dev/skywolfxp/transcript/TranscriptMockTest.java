@@ -21,7 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 
-class TranscriptMock {
+class TranscriptMockTest {
   AutoCloseable autoCloseable;
   
   Path outputDir = Path.of(System.getProperty("java.io.tmpdir")).resolve("discord-channel-html-transcript");
