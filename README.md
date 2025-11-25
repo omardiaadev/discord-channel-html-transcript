@@ -1,10 +1,10 @@
-<h1 align="center"><code>discord-channel-html-transcript</code></h1>
+<h1 align="center">discord-channel-html-transcript</h1>
 
 <p align="center"><strong>Java library to generate easily shareable HTML archives of channels, bringing back the familiar Discord visuals!</strong></p>
 
 <p align="center">
-    <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Central Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=for-the-badge&label=MAVEN&labelColor=ffffff&color=0055d2"></a>
-    <a href="https://github.com/skywolfxp/discord-channel-html-transcript/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/skywolfxp/discord-channel-html-transcript?style=for-the-badge&label=LICENSE&labelColor=ffffff&color=0055d2"></a>
+    <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Central Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
+    <a href="https://github.com/skywolfxp/discord-channel-html-transcript/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/skywolfxp/discord-channel-html-transcript?style=flat-square&label=LICENSE&color=0055D2&labelColor=0055D2"></a>
 </p>
 
 ## About
@@ -96,5 +96,5 @@ dependencies {
 ## Socials
 
 <a href="https://fiverr.com/skywolfxp"><img alt="Fiverr" src="https://img.shields.io/badge/-1DBF73?style=for-the-badge&logo=fiverr&logoColor=FFFFFF&logoSize=auto"></a>
-<a href="https://reddit.com/user/omardiaadev"><img alt="Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=FFFFFF"></a>
-<a href="https://discord.gg/4j7h5q5rts"><img alt="Discord" src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=FFFFFF"></a>
+<a href="https://reddit.com/user/omardiaadev"><img alt="Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=FFFFFF&logoSize=auto"></a>
+<a href="https://discord.gg/4j7h5q5rts"><img alt="Discord" src="https://img.shields.io/discord/1055244032105787472?style=for-the-badge&logo=discord&logoColor=FFFFFF&logoSize=auto&label=%20&color=5865F2"></a>
