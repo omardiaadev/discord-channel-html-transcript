@@ -17,24 +17,24 @@
   <licenses>
     <license>
       <name>CC BY-SA 4.0</name>
-      <url>https://github.com/skywolfxp/discord-channel-html-transcript/blob/main/LICENSE</url>
+      <url>https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
 
   <developers>
     <developer>
-      <name>SkyWolfXP</name>
-      <email>contact@skywolfxp.dev</email>
-      <url>https://skywolfxp.dev</url>
+      <name>Omar Diaa</name>
+      <email>contact@omardiaa.dev</email>
+      <url>https://omardiaa.dev</url>
     </developer>
   </developers>
 
   <scm>
-    <url>https://github.com/skywolfxp/discord-channel-html-transcript</url>
-    <connection>scm:git:git://github.com/skywolfxp/discord-channel-html-transcript.git</connection>
+    <url>https://github.com/omardiaadev/discord-channel-html-transcript</url>
+    <connection>scm:git:git://github.com/omardiaadev/discord-channel-html-transcript.git</connection>
     <developerConnection>
-      scm:git:ssh://git@github.com:skywolfxp/discord-channel-html-transcript.git
+      scm:git:ssh://git@github.com:omardiaadev/discord-channel-html-transcript.git
     </developerConnection>
   </scm>
 

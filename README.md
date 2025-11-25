@@ -1,10 +1,10 @@
-<h1 align="center">Discord Channel HTML Transcript</h1>
+<h1 align="center"><code>discord-channel-html-transcript</code></h1>
 
 <p align="center"><strong>Java library to generate easily shareable HTML archives of channels, bringing back the familiar Discord visuals!</strong></p>
 
 <p align="center">
-    <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Central Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=for-the-badge&label=MAVEN&labelColor=000000&color=008E00"></a>
-    <a href="https://github.com/skywolfxp/discord-channel-html-transcript/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/skywolfxp/discord-channel-html-transcript?style=for-the-badge&label=LICENSE&labelColor=000000&color=008E00"></a>
+    <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Central Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=for-the-badge&label=MAVEN&labelColor=ffffff&color=0055d2"></a>
+    <a href="https://github.com/skywolfxp/discord-channel-html-transcript/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/skywolfxp/discord-channel-html-transcript?style=for-the-badge&label=LICENSE&labelColor=ffffff&color=0055d2"></a>
 </p>
 
 ## About
@@ -95,7 +95,6 @@ dependencies {
 
 ## Socials
 
-<a href="https://fiverr.com/skywolfxp"><img alt="Fiverr" height="24" src="https://img.shields.io/badge/@skywolfxp-1DBF73?style=flat-square&logo=fiverr&logoColor=FFFFFF&logoSize=auto"></a>
-<a href="https://upwork.com/freelancers/~013d98c8a8af272cbb"><img alt="Upwork" height="24" src="https://img.shields.io/badge/Omar_D.-6FDA44?style=flat-square&logo=upwork&logoColor=FFFFFF&logoSize=auto"></a>
-<a href="https://reddit.com/user/skywolfxp"><img alt="Reddit" height="24" src="https://img.shields.io/badge/u/skywolfxp-FF4500?style=flat-square&logo=reddit&logoColor=FFFFFF&logoSize=auto"></a>
-<a href="https://discord.com/users/974748803305455627"><img alt="Discord" height="24" src="https://img.shields.io/badge/skywolfxp.dev-5865F2?style=flat-square&logo=discord&logoColor=FFFFFF&logoSize=auto"></a>
+<a href="https://fiverr.com/skywolfxp"><img alt="Fiverr" src="https://img.shields.io/badge/-1DBF73?style=for-the-badge&logo=fiverr&logoColor=FFFFFF&logoSize=auto"></a>
+<a href="https://reddit.com/user/omardiaadev"><img alt="Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=FFFFFF"></a>
+<a href="https://discord.gg/4j7h5q5rts"><img alt="Discord" src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=FFFFFF"></a>
