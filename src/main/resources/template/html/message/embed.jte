@@ -9,7 +9,6 @@
     style="border-left: 0.25rem solid ${"#%1$06X".formatted(embed.getColorRaw())};"
     class="embed"
   >
-    <!-- Embed Author -->
     @if(embed.getAuthor() != null)
       <div class="embed__author embed--margin">
         @if(embed.getAuthor().getIconUrl() != null)
@@ -29,24 +28,20 @@
       </div>
     @endif
 
-    <!-- Embed Title -->
     @if(embed.getTitle() != null)
       <div class="embed__title embed--margin">
         <span>${embed.getTitle()}</span>
       </div>
     @endif
 
-    <!-- Embed Description -->
     @if(embed.getDescription() != null)
       <div class="embed__description embed--margin">
         <span>$unsafe{TranscriptUtils.parseMarkup(message.getGuild(), embed.getDescription())}</span>
       </div>
     @endif
 
-    <!-- Embed Fields -->
     @if(!embed.getFields().isEmpty())
       <div class="embed__fields">
-        <!-- Embed Field -->
         @for(var field : embed.getFields())
           <div class="embed__field">
             @if(field.getName() != null)
@@ -65,7 +60,6 @@
       </div>
     @endif
 
-    <!-- Embed Image -->
     @if(embed.getImage() != null)
       <div class="embed__image">
         <img
@@ -77,7 +71,6 @@
       </div>
     @endif
 
-    <!-- Embed Thumbnail -->
     @if(embed.getThumbnail() != null)
       <div class="embed__thumbnail">
         <img
@@ -89,7 +82,6 @@
       </div>
     @endif
 
-    <!-- Embed Footer -->
     @if(embed.getFooter() != null)
       <div class="embed__footer embed--margin">
         @if(embed.getFooter().getIconUrl() != null)

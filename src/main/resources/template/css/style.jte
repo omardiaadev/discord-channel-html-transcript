@@ -539,7 +539,7 @@
     color: var(--text-normal);
   }
 
-  /* ActionRow */
+  /* action-row */
   .action-rows {
     display: flex;
     flex-direction: column;
@@ -557,8 +557,8 @@
     gap: 0.5rem;
   }
 
-  /* ActionRow Button */
-  .action-row__button {
+  /* button */
+  .button {
     display: flex;
     align-items: center;
     width: auto;
@@ -572,64 +572,75 @@
     line-height: 1.375rem;
   }
 
-  .action-row__button[aria-disabled="true"] {
+  .button[aria-disabled="true"] {
     opacity: 0.5;
     cursor: not-allowed;
   }
 
-  .action-row__button__emoji {
+  .button__emoji {
     width: 1.375rem;
     height: 1.375rem;
     margin-right: 0.25rem;
     font-size: 1rem;
   }
 
-  .action-row__button--primary {
+  .button--primary {
     background-color: var(--button-brand-background);
   }
 
-  .action-row__button--primary:not([aria-disabled]):hover {
+  .button--primary:not([aria-disabled]):hover {
     background-color: var(--button-brand-background-hover);
   }
 
-  .action-row__button--secondary {
+  .button--secondary {
     background-color: var(--button-secondary-background);
   }
 
-  .action-row__button--secondary:not([aria-disabled]):hover {
+  .button--secondary:not([aria-disabled]):hover {
     background-color: var(--button-secondary-background-hover);
   }
 
-  .action-row__button--success {
+  .button--success {
     background-color: var(--button-positive-background);
   }
 
-  .action-row__button--success:not([aria-disabled]):hover {
+  .button--success:not([aria-disabled]):hover {
     background-color: var(--button-positive-background-hover);
   }
 
-  .action-row__button--danger {
+  .button--danger {
     background-color: var(--button-danger-background);
   }
 
-  .action-row__button--danger:not([aria-disabled]):hover {
+  .button--danger:not([aria-disabled]):hover {
     background-color: var(--button-danger-background-hover);
   }
 
-  .action-row__button--link {
+  .button--link {
     background-color: var(--button-secondary-background);
   }
 
-  .action-row__button--link:not([aria-disabled]):hover {
+  .button--link:not([aria-disabled]):hover {
     background-color: var(--button-secondary-background-hover);
   }
 
-  .action-row__button__link-icon {
+  .button--link-icon {
     margin-left: 0.5rem;
   }
 
-  /* ActionRow Select */
-  .action-row__select {
+  /* container */
+  .container {
+    display: flex;
+    flex-direction: column;
+    max-width: min(600px, 100%);
+    background: var(--background-surface-high);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  /* select-menu */
+  .select-menu {
     display: grid;
     align-items: center;
     gap: 0.5rem;
@@ -642,6 +653,21 @@
     border: 1px solid var(--border-normal);
     border-radius: 8px;
     color: var(--text-secondary);
+  }
+
+  /* separator */
+  .separator:not([aria-hidden]) {
+    border-bottom: 1px solid hsl(240 calc(1 * 4%) 60.784%/0.2);
+  }
+
+  .separator--large {
+    margin: 8px;
+  }
+
+  /* text-display */
+  .text-display {
+    font-size: .875rem;
+    line-height: 1.375rem;
   }
 
   /* Reactions */
@@ -709,7 +735,7 @@
     margin-top: 0.5rem;
   }
 
-  /* Discord Markup */
+  /* markup */
   .markup__link {
     color: var(--text-link);
   }

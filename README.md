@@ -90,8 +90,9 @@ dependencies {
     - **macOS:** `/tmp`
     - **Linux:** `/tmp`
 
-2. Copy the CSS in [style.jte](src/main/resources/template/css/style.jte) to
-   `/discord-channel-html-transcript/style.css` and experiment with your own CSS!
+2. Use CSS in [style.css](src/test/resources/template/css/style.css) for live updates.
+
+3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/template/css/style.jte) when finished tweaking.
 
 ## Socials
 

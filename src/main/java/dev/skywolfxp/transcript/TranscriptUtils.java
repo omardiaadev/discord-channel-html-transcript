@@ -17,96 +17,96 @@ public class TranscriptUtils {
   private final static Pattern ITALIC = Pattern.compile("[*_](?![*_])(.+?)[_*]");
   private final static Pattern STRIKE_THROUGH = Pattern.compile("~~(.+?)~~");
   private final static Pattern LINK = Pattern.compile("\\[(.*)]\\((\\S*)\\)");
-  
+
   private final static Pattern CODE_BLOCK = Pattern.compile("```\\n(.*)\\n```", Pattern.DOTALL);
   private final static Pattern CODE_INLINE = Pattern.compile("`(?!`)(.*)`");
-  
-  private final static Pattern HEADER_1 = Pattern.compile("^#\\s(.*)(?=<br>)|^#\\s(.*)", Pattern.MULTILINE);
-  private final static Pattern HEADER_2 = Pattern.compile("^##\\s(.*)(?=<br>)|^##\\s(.*)", Pattern.MULTILINE);
-  private final static Pattern HEADER_3 = Pattern.compile("^###\\s(.*)(?=<br>)|^###\\s(.*)", Pattern.MULTILINE);
-  
+
+  private final static Pattern HEADER_1 = Pattern.compile("^#\\s(.*)", Pattern.MULTILINE);
+  private final static Pattern HEADER_2 = Pattern.compile("^##\\s(.*)", Pattern.MULTILINE);
+  private final static Pattern HEADER_3 = Pattern.compile("^###\\s(.*)", Pattern.MULTILINE);
+
   private final static Pattern SUBTEXT = Pattern.compile("^-# (.*)$", Pattern.MULTILINE);
-  
+
   private final static Pattern MENTION_USER = Pattern.compile("&lt;@(\\d+)&gt;");
   private final static Pattern MENTION_ROLE = Pattern.compile("&lt;@&amp;(\\d+)&gt;");
   private final static Pattern MENTION_CHANNEL = Pattern.compile("&lt;#(\\d+)&gt;");
-  
+
   private final static long KB = 1024;
   private final static long MB = KB * KB;
   private final static long GB = MB * KB;
-  
+
   // TODO: Take a look at @NotNull on Guild parameter
   @NotNull
   public static String parseMarkup(Guild guild, @NotNull String message) {
     String escapedMessage = escapeMessage(message).replaceAll("(?<!```)\\n", "<br>\n");
-    
+
     Matcher matcher = UNDERLINE.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(matcher.group(), "<u>%s</u>".formatted(matcher.group(1)));
     }
-    
+
     matcher = BOLD.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(matcher.group(), "<strong>%s</strong>".formatted(matcher.group(1)));
     }
-    
+
     matcher = ITALIC.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(matcher.group(), "<em>%s</em>".formatted(matcher.group(1)));
     }
-    
+
     matcher = STRIKE_THROUGH.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(matcher.group(), "<s>%s</s>".formatted(matcher.group(1)));
     }
-    
+
     matcher = LINK.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(
         matcher.group(), "<a href=\"%s\" class=\"markup__link\">%s</a>".formatted(matcher.group(2), matcher.group(1)));
     }
-    
+
     matcher = HEADER_1.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage =
         escapedMessage.replace(matcher.group(), "<h1 class=\"markup__header\">%s</h1>".formatted(matcher.group(1)));
     }
-    
+
     matcher = HEADER_2.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage =
         escapedMessage.replace(matcher.group(), "<h2 class=\"markup__header\">%s</h2>".formatted(matcher.group(1)));
     }
-    
+
     matcher = HEADER_3.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage =
         escapedMessage.replace(matcher.group(), "<h3 class=\"markup__header\">%s</h3>".formatted(matcher.group(1)));
     }
-    
+
     matcher = SUBTEXT.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(
         matcher.group(), "<small class=\"markup__subtext\">%s</small>".formatted(matcher.group(1)));
     }
-    
+
     matcher = CODE_BLOCK.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(
         matcher.group(), "<code class=\"markup__code-block\">%s</code>".formatted(matcher.group(1)));
     }
-    
+
     matcher = CODE_INLINE.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(
         matcher.group(), "<code class=\"markup__code-inline\">%s</code>".formatted(matcher.group(1)));
     }
-    
+
     matcher = MENTION_USER.matcher(escapedMessage);
     while (matcher.find()) {
       String userId = matcher.group(1);
       User user = guild.getJDA().getUserById(userId);
-      
+
       if (user == null) {
         escapedMessage = escapedMessage.replace(
           matcher.group(), """
@@ -114,10 +114,10 @@ public class TranscriptUtils {
                              <@%s>
                            </span>
                            """.formatted(userId));
-        
+
         continue;
       }
-      
+
       escapedMessage = escapedMessage.replace(
         matcher.group(), """
                          <a href="https://discord.com/users/%s" class="mention">
@@ -125,12 +125,12 @@ public class TranscriptUtils {
                          </a>
                          """.formatted(userId, user.getEffectiveName()));
     }
-    
+
     matcher = MENTION_ROLE.matcher(escapedMessage);
     while (matcher.find()) {
       String roleId = matcher.group(1);
       Role role = guild.getRoleById(roleId);
-      
+
       if (role == null) {
         escapedMessage = escapedMessage.replace(
           matcher.group(), """
@@ -138,21 +138,21 @@ public class TranscriptUtils {
                              @unknown-role
                            </span>
                            """);
-        
+
         continue;
       }
-      
+
       escapedMessage = escapedMessage.replace(
         matcher.group(), """
                          <span class="mention" style="color: #%1$06X; background-color: #%1$06X10;" onmouseover="this.style.backgroundColor='#%1$06X30';" onmouseout="this.style.backgroundColor='#%1$06X10';">@%2$s</span>
                          """.formatted(role.getColorRaw(), role.getName()));
     }
-    
+
     matcher = MENTION_CHANNEL.matcher(escapedMessage);
     while (matcher.find()) {
       String channelId = matcher.group(1);
       GuildChannel channel = guild.getGuildChannelById(channelId);
-      
+
       if (channel == null) {
         escapedMessage = escapedMessage.replace(
           matcher.group(), """
@@ -172,10 +172,10 @@ public class TranscriptUtils {
                              <em>unknown</em>
                            </span>
                            """);
-        
+
         continue;
       }
-      
+
       escapedMessage = escapedMessage.replace(
         matcher.group(), """
                          <a href="https://discord.com/channels/%s/%s" class="mention">
@@ -195,10 +195,12 @@ public class TranscriptUtils {
                          </a>
                          """.formatted(guild.getId(), channelId, channel.getName()));
     }
-    
+
+    escapedMessage = escapedMessage.replaceAll("\n", "");
+
     return escapedMessage;
   }
-  
+
   /**
    * @param bytes
    *   Number of bytes to parse
@@ -217,7 +219,7 @@ public class TranscriptUtils {
       return "%.2f GB".formatted((double) bytes / GB);
     }
   }
-  
+
   /**
    * Escapes HTML Characters for XSS Protection
    *
@@ -231,7 +233,7 @@ public class TranscriptUtils {
   private static String escapeMessage(@NotNull String messageContent) {
     StringOutput stringOutput = new StringOutput();
     Escape.htmlContent(messageContent, stringOutput);
-    
+
     return stringOutput.toString();
   }
 }

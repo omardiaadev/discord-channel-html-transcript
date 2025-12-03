@@ -26,7 +26,7 @@ public final class Transcript {
   private final TemplateEngine templateEngine;
   private final Utf8ByteOutput utf8ByteOutput;
   private final HashMap<String, Object> params;
-  
+
   /**
    * Constructs {@link Transcript} with {@link TemplateEngine} precompiled template configuration.
    */
@@ -35,7 +35,7 @@ public final class Transcript {
     this.utf8ByteOutput = new Utf8ByteOutput();
     this.params = new HashMap<>();
   }
-  
+
   /**
    * @param textChannel
    *   The {@link TextChannel} for which to write the Transcript.
@@ -46,18 +46,17 @@ public final class Transcript {
   public void render(@NotNull TextChannel textChannel) throws IllegalArgumentException, TemplateException {
     List<Message> messages = textChannel
       .getIterableHistory().stream().sorted(Comparator.comparing(ISnowflake::getTimeCreated)).toList();
-    
+
     if (messages.isEmpty()) {
       throw new IllegalArgumentException("TextChannel '%s' contains no messages".formatted(textChannel.getName()));
     }
-    
+
     params.put("textChannel", textChannel);
     params.put("messages", messages);
-    params.put("isDev", false);
-    
+
     templateEngine.render("template.jte", params, utf8ByteOutput);
   }
-  
+
   /**
    * Converts the output to {@link FileUpload} to directly send anywhere on Discord.
    * <p>
@@ -73,7 +72,7 @@ public final class Transcript {
     return FileUpload.fromData(
       utf8ByteOutput.toByteArray(), fileName.endsWith(".html") ? fileName : fileName + ".html");
   }
-  
+
   /**
    * Writes the output to the specified {@link File}.
    *
