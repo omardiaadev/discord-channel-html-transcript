@@ -72,10 +72,10 @@
     !{boolean isDifferentAuthor = !previousMessage.getAuthor().equals(message.getAuthor());}
     !{boolean isDividerShown = previousMessage.equals(message) || (previousMessage.getTimeCreated().getDayOfYear() != message.getTimeCreated().getDayOfYear());}
 
-    @template.html.channel.divider(message = message, isDividerShown = isDividerShown)
+    @template.discord.divider(message = message, isDividerShown = isDividerShown)
 
     <li class="message">
-      @template.html.message.reference(message = message)
+      @template.discord.reference(message = message)
 
       <div class="author__avatar__container user-select-none ${(isDifferentAuthor || isDividerShown) ? "message--different-author" : null}">
         @if(isDifferentAuthor || isDividerShown)
@@ -119,7 +119,7 @@
         >
           $unsafe{TranscriptUtils.parseMarkup(message.getGuild(), message.getContentRaw())}
 
-          @template.html.message.attachment(message = message)
+          @template.discord.attachments(message = message)
 
           @if(message.getTimeEdited() != null)
             <span class="message__edited user-select-none">
@@ -133,23 +133,23 @@
 
         @if (!message.getComponents().isEmpty())
           @if(message.isUsingComponentsV2())
-            @template.html.message.message-component-tree(guild = message.getGuild(), componentTree = message.getComponentTree())
+            @template.discord.message-component-tree(guild = message.getGuild(), componentTree = message.getComponentTree())
           @else
-            @template.html.message.embed(message = message)
+            @template.discord.embed(message = message)
 
             @for(var actionRow : message.getComponentTree().findAll(ActionRow.class))
-              @template.html.message.components.action-row(actionRow = actionRow)
+              @template.discord.component.action-row(actionRow = actionRow)
             @endfor
           @endif
         @endif
 
-        @template.html.message.reaction(message = message)
+        @template.discord.reaction(message = message)
       </div>
     </li>
     !{previousMessage = message;}
   @endfor
 </ol>
 
-@template.html.channel.footer()
+@template.discord.footer()
 </body>
 </html>

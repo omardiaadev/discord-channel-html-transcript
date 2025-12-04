@@ -9,9 +9,9 @@
   <div class="action-row">
     @for(ActionComponent component : actionRow.getActionComponents())
       @if(component instanceof Button button)
-        @template.html.message.components.button(button = button)
+        @template.discord.component.button(button = button)
       @elseif(component instanceof SelectMenu)
-        @template.html.message.components.select-menu()
+        @template.discord.component.select-menu()
       @endif
     @endfor
   </div>

@@ -6,21 +6,12 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.entities.emoji.*;
 import net.dv8tion.jda.api.interactions.InteractionType;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
-
+import static dev.omardiaa.transcript.Constants.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-final class TranscriptMockUtil {
-  private static final String RICH_CUSTOM_EMOJI = "https://cdn.discordapp.com/emojis/1353135081476329523.webp?";
-  static final String AVATAR_URL_USER = "https://avatars.githubusercontent.com/u/70555240?";
-  static final String AVATAR_URL_BOT =
-    "https://cdn.discordapp.com/avatars/1093684128437764136/3b2cb4620d02fbcae500a447d0c14de9.png?";
-  static final OffsetDateTime TIME = OffsetDateTime.of(2030, 2, 20, 0, 0, 0, 0, ZoneOffset.UTC);
-
+class TranscriptMockUtil {
   @NotNull
   public static JDA mockJDA(@NotNull User user) {
     JDA jda = mock(JDA.class);
@@ -30,9 +21,16 @@ final class TranscriptMockUtil {
   }
 
   @NotNull
-  public static TextChannel mockTextChannel(@NotNull String name, @Nullable Guild guild) {
+  public static Guild mockGuild() {
+    return new GuildMockBuilder().withJDA(mockJDA(AUTHOR_1)).withRole("420", mockRole("Admin", 51200)).build();
+  }
+
+  @NotNull
+  public static TextChannel mockTextChannel(@NotNull String name) {
     TextChannel textChannel = mock(TextChannel.class);
     when(textChannel.getName()).thenReturn(name);
+
+    Guild guild = mockGuild();
     when(textChannel.getGuild()).thenReturn(guild);
 
     return textChannel;

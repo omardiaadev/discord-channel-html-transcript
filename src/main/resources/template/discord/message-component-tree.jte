@@ -15,19 +15,19 @@
 <div class="message-component-tree">
   @for(MessageTopLevelComponent component : componentTree.getComponents())
     @if(component instanceof Container container)
-      @template.html.message.components.container(guild = guild, container = container)
+      @template.discord.component.container(guild = guild, container = container)
     @elseif(component instanceof Section section)
-      @template.html.message.components.section(guild = guild, section = section)
+      @template.discord.component.section(guild = guild, section = section)
     @elseif(component instanceof TextDisplay textDisplay)
-      @template.html.message.components.text-display(guild = guild, textDisplay = textDisplay)
+      @template.discord.component.text-display(guild = guild, textDisplay = textDisplay)
     @elseif(component instanceof MediaGallery mediaGallery)
-      @template.html.message.components.media-gallery(mediaGallery = mediaGallery)
+      @template.discord.component.media-gallery(mediaGallery = mediaGallery)
     @elseif(component instanceof Separator separator)
-      @template.html.message.components.separator(separator = separator)
+      @template.discord.component.separator(separator = separator)
     @elseif(component instanceof FileDisplay fileDisplay)
 
     @elseif(component instanceof ActionRow actionRow)
-      @template.html.message.components.action-row(actionRow = actionRow)
+      @template.discord.component.action-row(actionRow = actionRow)
     @endif
   @endfor
 </div>

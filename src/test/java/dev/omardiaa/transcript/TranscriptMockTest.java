@@ -5,7 +5,6 @@ import gg.jte.TemplateEngine;
 import gg.jte.TemplateException;
 import gg.jte.output.Utf8ByteOutput;
 import gg.jte.resolve.ResourceCodeResolver;
-import net.dv8tion.jda.api.entities.Guild;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,10 +52,8 @@ class TranscriptMockTest {
 
   @Test
   void render() throws IllegalArgumentException, TemplateException, IOException {
-    Guild guild = TranscriptTestUtil.createGuild();
-
-    params.put("textChannel", TranscriptMockUtil.mockTextChannel("discord-channel-html-transcript", guild));
-    params.put("messages", TranscriptTestUtil.createMessages(guild));
+    params.put("textChannel", TranscriptMockUtil.mockTextChannel("discord-channel-html-transcript"));
+    params.put("messages", TranscriptTestUtil.createMessages());
     params.put("devStyles", new File("src/test/resources/template/css/style.css").getAbsolutePath());
 
     templateEngine.setTrimControlStructures(true);

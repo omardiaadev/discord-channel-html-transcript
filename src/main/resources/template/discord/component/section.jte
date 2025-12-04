@@ -1,3 +1,4 @@
+@import net.dv8tion.jda.api.components.thumbnail.Thumbnail
 @import net.dv8tion.jda.api.entities.Guild
 @import net.dv8tion.jda.api.components.buttons.Button
 @import net.dv8tion.jda.api.components.section.Section
@@ -13,7 +14,9 @@
 
   <div class="section__accessory">
     @if(section.getAccessory() instanceof Button button)
-      @template.html.message.components.button(button = button)
+      @template.discord.component.button(button = button)
+    @elseif(section.getAccessory() instanceof Thumbnail thumbnail)
+      @template.common.image(src = thumbnail.getUrl(), alt = "Thumbnail")
     @endif
   </div>
 </div>

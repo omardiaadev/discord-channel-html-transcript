@@ -35,9 +35,8 @@ public class TranscriptUtils {
   private final static long MB = KB * KB;
   private final static long GB = MB * KB;
 
-  // TODO: Take a look at @NotNull on Guild parameter
   @NotNull
-  public static String parseMarkup(Guild guild, @NotNull String message) {
+  public static String parseMarkup(@NotNull Guild guild, @NotNull String message) {
     String escapedMessage = escapeMessage(message).replaceAll("(?<!```)\\n", "<br>\n");
 
     Matcher matcher = UNDERLINE.matcher(escapedMessage);
@@ -93,13 +92,13 @@ public class TranscriptUtils {
     matcher = CODE_BLOCK.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(
-        matcher.group(), "<code class=\"markup__code-block\">%s</code>".formatted(matcher.group(1)));
+        matcher.group(), "<code class=\"markup__code markup__code--block\">%s</code>".formatted(matcher.group(1)));
     }
 
     matcher = CODE_INLINE.matcher(escapedMessage);
     while (matcher.find()) {
       escapedMessage = escapedMessage.replace(
-        matcher.group(), "<code class=\"markup__code-inline\">%s</code>".formatted(matcher.group(1)));
+        matcher.group(), "<code class=\"markup__code markup__code--inline\">%s</code>".formatted(matcher.group(1)));
     }
 
     matcher = MENTION_USER.matcher(escapedMessage);

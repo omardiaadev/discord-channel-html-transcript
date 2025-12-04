@@ -5,7 +5,6 @@
   <img
     src="${src}"
     alt="${alt}"
-    loading="lazy"
     class="image"
-  >
+  />
 </div>
