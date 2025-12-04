@@ -2,8 +2,8 @@
 @import net.dv8tion.jda.api.components.actionrow.ActionRow
 @import net.dv8tion.jda.api.entities.Message
 @import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
-@import dev.skywolfxp.transcript.TranscriptConstants
-@import dev.skywolfxp.transcript.TranscriptUtils
+@import dev.omardiaa.transcript.TranscriptConstants
+@import dev.omardiaa.transcript.TranscriptUtils
 
 @param List<Message> messages
 @param TextChannel textChannel

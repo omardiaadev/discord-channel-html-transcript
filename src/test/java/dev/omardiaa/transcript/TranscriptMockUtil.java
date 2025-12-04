@@ -1,4 +1,4 @@
-package dev.skywolfxp.transcript;
+package dev.omardiaa.transcript;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.*;

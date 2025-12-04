@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Central Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
-    <a href="https://github.com/skywolfxp/discord-channel-html-transcript/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/skywolfxp/discord-channel-html-transcript?style=flat-square&label=LICENSE&color=0055D2&labelColor=0055D2"></a>
+    <a href="https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/omardiaadev/discord-channel-html-transcript?style=flat-square&label=LICENSE&color=0055D2&labelColor=0055D2"></a>
 </p>
 
 ## About
@@ -62,7 +62,7 @@ font that is the property of Discord Inc.**\
 
 <dependencies>
   <dependency>
-    <groupId>dev.skywolfxp</groupId>
+    <groupId>dev.omardiaa</groupId>
     <artifactId>discord-channel-html-transcript</artifactId>
     <version>${version}</version>
   </dependency>
@@ -77,25 +77,25 @@ repositories {
 }
 
 dependencies {
-  implementation("dev.skywolfxp:discord-channel-html-transcript:${version}")
+  implementation("dev.omardiaa:discord-channel-html-transcript:${version}")
 }
 ```
 
 ## Development
 
-1. Run [TranscriptGeneratorTest#createTranscript()](src/test/java/dev/skywolfxp/transcript/TranscriptGeneratorTest.java), A
+1. Run [TranscriptMockTest#render()](src/test/java/dev/omardiaa/transcript/TranscriptMockTest.java), A
    `discord-channel-html-transcript` folder will be created under:
 
     - **Windows:** `%USERPROFILE%\AppData\Local\Temp`
     - **macOS:** `/tmp`
     - **Linux:** `/tmp`
 
-2. Use CSS in [style.css](src/test/resources/template/css/style.css) for live updates.
+2. Use CSS in [style.css](src/test/resources/template/css/style.css) for live updates during development.
 
-3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/template/css/style.jte) when finished tweaking.
+3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/template/css/style.jte) when done.
 
 ## Socials
 
-<a href="https://fiverr.com/skywolfxp"><img alt="Fiverr" src="https://img.shields.io/badge/-1DBF73?style=for-the-badge&logo=fiverr&logoColor=FFFFFF&logoSize=auto"></a>
-<a href="https://reddit.com/user/omardiaadev"><img alt="Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=FFFFFF&logoSize=auto"></a>
-<a href="https://discord.gg/4j7h5q5rts"><img alt="Discord" src="https://img.shields.io/discord/1055244032105787472?style=for-the-badge&logo=discord&logoColor=FFFFFF&logoSize=auto&label=%20&color=5865F2"></a>
+<a href="https://fiverr.com/skywolfxp"><img alt="Fiverr" src="https://img.shields.io/badge/-1DBF73?style=for-the-badge&logo=fiverr&logoColor=FFF&logoSize=auto"/></a>
+<a href="https://reddit.com/user/omardiaadev"><img alt="Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=FFF&logoSize=auto"/></a>
+<a href="https://discord.gg/4j7h5q5rts"><img alt="Discord" src="https://img.shields.io/discord/1055244032105787472?style=for-the-badge&logo=discord&logoColor=FFF&logoSize=auto&label=%20&color=5865F2"/></a>

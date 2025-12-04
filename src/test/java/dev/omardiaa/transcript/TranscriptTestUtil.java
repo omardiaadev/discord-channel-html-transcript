@@ -1,4 +1,4 @@
-package dev.skywolfxp.transcript;
+package dev.omardiaa.transcript;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.components.actionrow.ActionRow;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static dev.skywolfxp.transcript.TranscriptMockUtil.*;
+import static dev.omardiaa.transcript.TranscriptMockUtil.*;
 
 final class TranscriptTestUtil {
   private static final User AUTHOR_1 = mockAuthor("974748803305455627", "Omar Diaa", AVATAR_URL_USER, false);

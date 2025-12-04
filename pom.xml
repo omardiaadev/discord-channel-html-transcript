@@ -4,15 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>dev.skywolfxp</groupId>
+  <groupId>dev.omardiaa</groupId>
   <artifactId>discord-channel-html-transcript</artifactId>
-  <version>3.0.0</version>
+  <version>4.0.0</version>
 
-  <name>discord-channel-html-transcript</name>
+  <name>
+    discord-channel-html-transcript
+  </name>
   <description>
     Java library to generate easily shareable HTML archives of channels, bringing back the familiar Discord visuals!
   </description>
-  <url>https://github.com/skywolfxp/discord-channel-html-transcript</url>
+  <url>
+    https://github.com/omardiaadev/discord-channel-html-transcript
+  </url>
 
   <licenses>
     <license>
@@ -31,8 +35,12 @@
   </developers>
 
   <scm>
-    <url>https://github.com/omardiaadev/discord-channel-html-transcript</url>
-    <connection>scm:git:git://github.com/omardiaadev/discord-channel-html-transcript.git</connection>
+    <url>
+      https://github.com/omardiaadev/discord-channel-html-transcript
+    </url>
+    <connection>
+      scm:git:git://github.com/omardiaadev/discord-channel-html-transcript.git
+    </connection>
     <developerConnection>
       scm:git:ssh://git@github.com:omardiaadev/discord-channel-html-transcript.git
     </developerConnection>

@@ -1,4 +1,4 @@
-package dev.skywolfxp.transcript;
+package dev.omardiaa.transcript;
 
 import net.dv8tion.jda.api.components.tree.MessageComponentTree;
 import net.dv8tion.jda.api.entities.*;
@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Random;
 
-import static dev.skywolfxp.transcript.TranscriptMockUtil.TIME;
+import static dev.omardiaa.transcript.TranscriptMockUtil.TIME;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

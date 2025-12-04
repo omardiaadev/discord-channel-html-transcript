@@ -1,7 +1,7 @@
 @import net.dv8tion.jda.api.entities.Guild
 @import net.dv8tion.jda.api.components.buttons.Button
 @import net.dv8tion.jda.api.components.section.Section
-@import dev.skywolfxp.transcript.TranscriptUtils
+@import dev.omardiaa.transcript.TranscriptUtils
 
 @param Guild guild
 @param Section section

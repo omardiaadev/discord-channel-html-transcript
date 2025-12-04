@@ -1,4 +1,4 @@
-package dev.skywolfxp.transcript;
+package dev.omardiaa.transcript;
 
 import gg.jte.html.escape.Escape;
 import gg.jte.output.StringOutput;

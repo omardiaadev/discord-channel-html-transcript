@@ -1,6 +1,6 @@
 @import net.dv8tion.jda.api.entities.Guild
 @import net.dv8tion.jda.api.components.textdisplay.TextDisplay
-@import dev.skywolfxp.transcript.TranscriptUtils
+@import dev.omardiaa.transcript.TranscriptUtils
 
 @param Guild guild
 @param TextDisplay textDisplay

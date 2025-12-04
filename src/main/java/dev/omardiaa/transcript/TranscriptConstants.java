@@ -1,4 +1,4 @@
-package dev.skywolfxp.transcript;
+package dev.omardiaa.transcript;
 
 import java.time.format.DateTimeFormatter;
 

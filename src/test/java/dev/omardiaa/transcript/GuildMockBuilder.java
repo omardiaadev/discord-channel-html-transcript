@@ -1,4 +1,4 @@
-package dev.skywolfxp.transcript;
+package dev.omardiaa.transcript;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildChannel;
 import org.jetbrains.annotations.NotNull;
 
-import static dev.skywolfxp.transcript.TranscriptMockUtil.AVATAR_URL_BOT;
+import static dev.omardiaa.transcript.TranscriptMockUtil.AVATAR_URL_BOT;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

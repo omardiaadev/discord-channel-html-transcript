@@ -1,9 +1,13 @@
 # Changelog
 
-## WIP
+## 4.0.0 (WIP)
 
+### Changed
+
+- **Migrate maven GroupID from `dev.skywolfxp` to `dev.omardiaa`.**
 - Implement Discord's new Components V2.
 - Implement message formatting inside embeds.
+- Add `style.css` to test resources for use in dev environment.
 
 ## 3.0.0
 
@@ -39,9 +43,3 @@
 
 - Fix Discord markdown parsing only the first matched mention.
 - Fix role mention background and foreground colors.
-
-## 1.0.1
-
-### Added
-
-- Initial project release, Enjoy!

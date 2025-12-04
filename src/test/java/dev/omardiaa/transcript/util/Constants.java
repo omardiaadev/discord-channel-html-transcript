@@ -1,4 +1,4 @@
-package dev.skywolfxp.transcript.util;
+package dev.omardiaa.transcript.util;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;

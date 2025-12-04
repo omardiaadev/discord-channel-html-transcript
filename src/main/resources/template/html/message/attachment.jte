@@ -1,5 +1,5 @@
 @import net.dv8tion.jda.api.entities.Message
-@import dev.skywolfxp.transcript.TranscriptUtils
+@import dev.omardiaa.transcript.TranscriptUtils
 
 @param Message message
 
