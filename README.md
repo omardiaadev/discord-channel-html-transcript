@@ -67,8 +67,6 @@ font that is the property of Discord Inc.**\
 </dependencies>
 ```
 
-<hr/>
-
 ```kts
 repositories {
   mavenCentral()
