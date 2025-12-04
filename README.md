@@ -56,8 +56,6 @@ font that is the property of Discord Inc.**\
 
 ## Installation
 
-### Maven
-
 ```xml
 
 <dependencies>
@@ -69,7 +67,7 @@ font that is the property of Discord Inc.**\
 </dependencies>
 ```
 
-### Gradle
+<hr/>
 
 ```kts
 repositories {
