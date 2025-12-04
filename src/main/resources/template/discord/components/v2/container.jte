@@ -14,15 +14,15 @@
 <div class="container">
   @for(ContainerChildComponent component : container.getComponents())
     @if(component instanceof ActionRow actionRow)
-      @template.discord.component.action-row(actionRow = actionRow)
+      @template.discord.components.v1.action-row(actionRow = actionRow)
     @elseif(component instanceof Section section)
-      @template.discord.component.section(guild = guild, section = section)
+      @template.discord.components.v2.section(guild = guild, section = section)
     @elseif(component instanceof TextDisplay textDisplay)
-      @template.discord.component.text-display(guild = guild, textDisplay = textDisplay)
+      @template.discord.components.v2.text-display(guild = guild, textDisplay = textDisplay)
     @elseif(component instanceof MediaGallery mediaGallery)
-      @template.discord.component.media-gallery(mediaGallery = mediaGallery)
+      @template.discord.components.v2.media-gallery(mediaGallery = mediaGallery)
     @elseif(component instanceof Separator separator)
-      @template.discord.component.separator(separator = separator)
+      @template.discord.components.v2.separator(separator = separator)
     @elseif(component instanceof FileDisplay fileDisplay)
 
     @endif

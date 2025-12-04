@@ -8,7 +8,7 @@
 
 <div class="attachment__image image__container" data-count="${images.size()}">
   @for(Message.Attachment image : images)
-    @template.common.image(src = image.getUrl(), alt = image.getFileName())
+    @template.util.image(src = image.getUrl(), alt = image.getFileName())
   @endfor
 </div>
 

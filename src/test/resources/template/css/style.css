@@ -79,7 +79,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 1.75rem;
+  height: 28px;
   color: var(--text-normal);
   border-top: 1px solid var(--border-subtle);
   background-color: var(--background-base-lowest);
@@ -88,15 +88,13 @@ body {
 .bar {
   display: flex;
   justify-content: center;
-  height: 2.125rem;
+  height: 34px;
   background-color: var(--background-base-lowest);
 }
 
 .bar__guild {
-  bottom: 0;
   display: flex;
   align-items: center;
-  max-width: 50vw;
   gap: 0.5rem;
 }
 
@@ -113,21 +111,16 @@ body {
   line-height: 1.25rem;
   display: flex;
   align-items: center;
-  height: 2.875rem;
-  padding: 0.5rem;
+  height: 46px;
+  padding: 0.5rem 0.75rem;
   border-bottom: 1px solid var(--border-subtle);
   background-color: var(--header-bar-background);
-}
-
-.channel__header__icon {
-  margin: 0 0.5rem;
-  fill: var(--channel-icon);
+  gap: 0.5rem;
 }
 
 .channel__header__title {
   font-weight: 500;
   overflow: hidden;
-  flex-grow: 1;
   color: var(--text-normal);
 }
 
@@ -606,8 +599,10 @@ body {
   background-color: var(--button-secondary-background-hover);
 }
 
-.button--link-icon {
+.button--link__icon {
   margin-left: 0.5rem;
+  width: 16px;
+  height: 16px;
 }
 
 .container {
@@ -698,6 +693,8 @@ body {
 .reaction__emoji {
   line-height: 1.25rem;
   margin: 0.125rem 0;
+  width: 20px;
+  height: 20px;
 }
 
 .reaction__count {

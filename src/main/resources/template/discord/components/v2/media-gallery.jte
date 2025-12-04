@@ -5,6 +5,6 @@
 
 <div class="image__container" data-count="${mediaGallery.getItems().size()}">
   @for(MediaGalleryItem item : mediaGallery.getItems())
-    @template.common.image(src = item.getUrl(), alt = "Media Gallery Item")
+    @template.util.image(src = item.getUrl(), alt = "Media Gallery Item")
   @endfor
 </div>

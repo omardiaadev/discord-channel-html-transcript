@@ -14,9 +14,9 @@
 
   <div class="section__accessory">
     @if(section.getAccessory() instanceof Button button)
-      @template.discord.component.button(button = button)
+      @template.discord.components.v1.button(button = button)
     @elseif(section.getAccessory() instanceof Thumbnail thumbnail)
-      @template.common.image(src = thumbnail.getUrl(), alt = "Thumbnail")
+      @template.util.image(src = thumbnail.getUrl(), alt = "Thumbnail")
     @endif
   </div>
 </div>

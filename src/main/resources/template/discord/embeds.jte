@@ -1,10 +1,13 @@
+@import java.util.List
 @import dev.omardiaa.transcript.TranscriptConstants
 @import dev.omardiaa.transcript.TranscriptUtils
-@import net.dv8tion.jda.api.entities.Message
+@import net.dv8tion.jda.api.entities.Guild
+@import net.dv8tion.jda.api.entities.MessageEmbed
 
-@param Message message
+@param Guild guild
+@param List<MessageEmbed> embeds
 
-@for(var embed : message.getEmbeds())
+@for(MessageEmbed embed : embeds)
   <article
     style="border-left: 0.25rem solid ${"#%1$06X".formatted(embed.getColorRaw())};"
     class="embed"
@@ -15,7 +18,6 @@
           <img
             src="${embed.getAuthor().getIconUrl()}"
             alt="Embed Author"
-            loading="lazy"
             class="embed__author__icon"
           />
         @endif
@@ -36,13 +38,13 @@
 
     @if(embed.getDescription() != null)
       <div class="embed__description embed--margin">
-        <span>$unsafe{TranscriptUtils.parseMarkup(message.getGuild(), embed.getDescription())}</span>
+        <span>$unsafe{TranscriptUtils.parseMarkup(guild, embed.getDescription())}</span>
       </div>
     @endif
 
     @if(!embed.getFields().isEmpty())
       <div class="embed__fields">
-        @for(var field : embed.getFields())
+        @for(MessageEmbed.Field field : embed.getFields())
           <div class="embed__field">
             @if(field.getName() != null)
               <div class="embed__field__name">
@@ -65,7 +67,6 @@
         <img
           src="${embed.getImage().getUrl()}"
           alt="Embed Image"
-          loading="lazy"
           class="embed__image__wrapper"
         />
       </div>
@@ -76,7 +77,6 @@
         <img
           src="${embed.getThumbnail().getUrl()}"
           alt="Embed Thumbnail"
-          loading="lazy"
           class="embed__thumbnail__wrapper"
         />
       </div>
@@ -88,8 +88,9 @@
           <img
             src="${embed.getFooter().getIconUrl()}"
             alt="Embed Footer Icon"
-            loading="lazy"
-            class="embed__footer__icon size-5"
+            height="20"
+            width="20"
+            class="embed__footer__icon"
           />
         @endif
 

@@ -1,9 +1,8 @@
 @import java.util.List
-@import net.dv8tion.jda.api.components.actionrow.ActionRow
-@import net.dv8tion.jda.api.entities.Message
-@import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 @import dev.omardiaa.transcript.TranscriptConstants
 @import dev.omardiaa.transcript.TranscriptUtils
+@import net.dv8tion.jda.api.entities.Message
+@import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 
 @param List<Message> messages
 @param TextChannel textChannel
@@ -38,8 +37,9 @@
     <div class="bar__guild">
       <img
         src="${textChannel.getGuild().getIconUrl()}"
-        alt="Server Icon"
-        class="size-5"
+        alt="${textChannel.getGuild().getName()}"
+        height="20"
+        width="20"
       />
 
       <div class="bar__guild__name">
@@ -52,10 +52,11 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      role="img"
-      class="channel__header__icon size-5"
+      height="20"
+      width="20"
     >
       <path
+        fill="#82838b"
         fill-rule="evenodd"
         d="M10.99 3.16A1 1 0 1 0 9 2.84L8.15 8H4a1 1 0 0 0 0 2h3.82l-.67 4H3a1 1 0 1 0 0 2h3.82l-.8 4.84a1 1 0 0 0 1.97.32L8.85 16h4.97l-.8 4.84a1 1 0 0 0 1.97.32l.86-5.16H20a1 1 0 1 0 0-2h-3.82l.67-4H21a1 1 0 1 0 0-2h-3.82l.8-4.84a1 1 0 1 0-1.97-.32L15.15 8h-4.97l.8-4.84ZM14.15 14l.67-4H9.85l-.67 4h4.97Z"
       />
@@ -72,10 +73,12 @@
     !{boolean isDifferentAuthor = !previousMessage.getAuthor().equals(message.getAuthor());}
     !{boolean isDividerShown = previousMessage.equals(message) || (previousMessage.getTimeCreated().getDayOfYear() != message.getTimeCreated().getDayOfYear());}
 
-    @template.discord.divider(message = message, isDividerShown = isDividerShown)
+    @if(isDividerShown)
+      @template.discord.ui.divider(message = message)
+    @endif
 
     <li class="message">
-      @template.discord.reference(message = message)
+      @template.discord.ui.reference(message = message)
 
       <div class="author__avatar__container user-select-none ${(isDifferentAuthor || isDividerShown) ? "message--different-author" : null}">
         @if(isDifferentAuthor || isDividerShown)
@@ -131,25 +134,15 @@
           @endif
         </div>
 
-        @if (!message.getComponents().isEmpty())
-          @if(message.isUsingComponentsV2())
-            @template.discord.message-component-tree(guild = message.getGuild(), componentTree = message.getComponentTree())
-          @else
-            @template.discord.embed(message = message)
+        @template.discord.components(message = message)
 
-            @for(var actionRow : message.getComponentTree().findAll(ActionRow.class))
-              @template.discord.component.action-row(actionRow = actionRow)
-            @endfor
-          @endif
-        @endif
-
-        @template.discord.reaction(message = message)
+        @template.discord.reactions(reactions = message.getReactions())
       </div>
     </li>
     !{previousMessage = message;}
   @endfor
 </ol>
 
-@template.discord.footer()
+@template.discord.ui.footer()
 </body>
 </html>
