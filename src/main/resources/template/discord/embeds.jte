@@ -7,37 +7,44 @@
 @param Guild guild
 @param List<MessageEmbed> embeds
 
+<%-- TODO: Refactor --%>
 @for(MessageEmbed embed : embeds)
   <article
     style="border-left: 0.25rem solid ${"#%1$06X".formatted(embed.getColorRaw())};"
     class="embed"
   >
-    @if(embed.getAuthor() != null)
-      <div class="embed__author embed--margin">
-        @if(embed.getAuthor().getIconUrl() != null)
+    !{MessageEmbed.AuthorInfo author = embed.getAuthor();}
+
+    @if(author != null)
+      <div class="embed__author embed__margin">
+        @if(author.getIconUrl() != null)
           <img
-            src="${embed.getAuthor().getIconUrl()}"
+            src="${author.getIconUrl()}"
             alt="Embed Author"
             class="embed__author__icon"
           />
         @endif
 
-        @if(embed.getAuthor().getName() != null)
+        @if(author.getName() != null)
           <span class="embed__author__name">
-            ${embed.getAuthor().getName()}
+            ${author.getName()}
           </span>
         @endif
       </div>
     @endif
 
     @if(embed.getTitle() != null)
-      <div class="embed__title embed--margin">
-        <span>${embed.getTitle()}</span>
+      <div class="embed__title embed__margin">
+        @if(embed.getUrl() != null)
+          <a href="${embed.getUrl()}">${embed.getTitle()}</a>
+        @else
+          <span>${embed.getTitle()}</span>
+        @endif
       </div>
     @endif
 
     @if(embed.getDescription() != null)
-      <div class="embed__description embed--margin">
+      <div class="embed__description embed__margin">
         <span>$unsafe{TranscriptUtils.parseMarkup(guild, embed.getDescription())}</span>
       </div>
     @endif
@@ -45,14 +52,18 @@
     @if(!embed.getFields().isEmpty())
       <div class="embed__fields">
         @for(MessageEmbed.Field field : embed.getFields())
-          <div class="embed__field">
+          <div class="embed__field" inline="${field.isInline()}">
             @if(field.getName() != null)
               <div class="embed__field__name">
                 <span>${field.getName()}</span>
               </div>
             @endif
 
-            @if(field.getValue() != null)
+            @if(field.getValue() == null || field.getValue().isBlank())
+              <div class="embed__field__value">
+                <span>$unsafe{"&#8203;"}</span>
+              </div>
+            @else
               <div class="embed__field__value">
                 <span>${field.getValue()}</span>
               </div>
@@ -63,27 +74,27 @@
     @endif
 
     @if(embed.getImage() != null)
-      <div class="embed__image">
+      <div class="embed__image__wrapper">
         <img
           src="${embed.getImage().getUrl()}"
           alt="Embed Image"
-          class="embed__image__wrapper"
+          class="embed__image"
         />
       </div>
     @endif
 
     @if(embed.getThumbnail() != null)
-      <div class="embed__thumbnail">
+      <div class="embed__thumbnail__wrapper">
         <img
           src="${embed.getThumbnail().getUrl()}"
           alt="Embed Thumbnail"
-          class="embed__thumbnail__wrapper"
+          class="embed__thumbnail"
         />
       </div>
     @endif
 
     @if(embed.getFooter() != null)
-      <div class="embed__footer embed--margin">
+      <div class="embed__footer embed__margin">
         @if(embed.getFooter().getIconUrl() != null)
           <img
             src="${embed.getFooter().getIconUrl()}"
@@ -99,7 +110,7 @@
             <span>${embed.getFooter().getText()}</span>
 
             @if(embed.getTimestamp() != null)
-              <span class="embed__footer__text__separator">•</span>
+              <span>•</span>
 
               <span>${embed.getTimestamp().format(TranscriptConstants.DATE_SHORT)}</span>
             @endif
