@@ -9,6 +9,7 @@
   --mention-background: oklch(0.577 0.209 273.85 / 0.24);
   --button-brand-background: oklch(0.577 0.209 273.85);
   --button-brand-background-hover: oklch(0.497 0.168 273.077);
+  --button-secondary-text: oklch(0.941 0.003 286.348);
   --button-secondary-background: oklch(0.679 0.012 286.086 / 0.12);
   --button-secondary-background-hover: oklch(0.679 0.012 286.086 / 0.2);
   --button-positive-background: oklch(0.542 0.151 149.511);
@@ -522,7 +523,7 @@ body {
   flex-direction: column;
   width: 100%;
   margin-top: 0.25rem;
-  color: #ffffff;
+  color: #FFFFFF;
   row-gap: 0.375rem;
 }
 
@@ -538,12 +539,13 @@ body {
   display: flex;
   align-items: center;
   width: auto;
-  min-width: 3.75rem;
-  height: 2rem;
+  min-width: 60px;
+  height: 32px;
   padding: 0.125rem 1rem;
   cursor: pointer;
   transition: background-color 170ms ease;
-  color: hsl(240 calc(1 * 5.263%) 92.549%/1);
+  text-wrap: nowrap;
+  color: var(--button-secondary-text);
   border-radius: 8px;
 }
 
@@ -600,9 +602,9 @@ body {
 }
 
 .button--link__icon {
-  margin-left: 0.5rem;
   width: 16px;
   height: 16px;
+  margin-left: 0.5rem;
 }
 
 .container {
@@ -692,9 +694,9 @@ body {
 
 .reaction__emoji {
   line-height: 1.25rem;
-  margin: 0.125rem 0;
   width: 20px;
   height: 20px;
+  margin: 0.125rem 0;
 }
 
 .reaction__count {

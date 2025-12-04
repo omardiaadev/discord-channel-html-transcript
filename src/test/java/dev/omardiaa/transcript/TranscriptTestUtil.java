@@ -30,13 +30,18 @@ final class TranscriptTestUtil {
     List<MessageEmbed> embeds = createMessageEmbeds();
 
     Message message5 =
-      new MessageMockBuilder(AUTHOR_2).withEmbeds(embeds).withComponentsV1(createComponentsV1()).build();
+      new MessageMockBuilder(AUTHOR_2).withEmbeds(embeds).withComponents(createComponentsV1(), false).build();
 
     return List.of(
-      new MessageMockBuilder(AUTHOR_1).withContent(
-        "**This** [Library](https://github.com/skywolfxp/discord-channel-html-transcript) __is__ *Awesome!*").build(),
+      new MessageMockBuilder(AUTHOR_1)
+        .withTimeCreated(TIME_D1)
+        .withContent(
+          "**This** [Library](https://github.com/skywolfxp/discord-channel-html-transcript) __is__ *Awesome!*").build(),
 
-      new MessageMockBuilder(AUTHOR_2).withEmbeds(embeds).withComponentsV2(createComponentsV2()).build(),
+      new MessageMockBuilder(AUTHOR_2)
+        .withComponents(createComponentsV2(), true)
+        .withTimeCreated(TIME_D2)
+        .build(),
 
       message5,
 
@@ -80,7 +85,7 @@ final class TranscriptTestUtil {
         .setImage(AVATAR_URL_USER)
         .setThumbnail(AVATAR_URL_USER)
         .setFooter("Footer", AVATAR_URL_USER)
-        .setTimestamp(TIME)
+        .setTimestamp(TIME_D2)
         .setColor(51200)
         .build());
   }
@@ -88,10 +93,10 @@ final class TranscriptTestUtil {
   @NotNull
   public static List<Button> createButtons() {
     return List.of(
-      Button.of(ButtonStyle.PRIMARY, "-", "Primary", Emoji.fromUnicode("💠")),
-      Button.of(ButtonStyle.SECONDARY, "-", "Secondary", Emoji.fromUnicode("💠")),
-      Button.of(ButtonStyle.SUCCESS, "-", "Success", Emoji.fromUnicode("💠")),
-      Button.of(ButtonStyle.DANGER, "-", "Danger", Emoji.fromUnicode("💠")),
+      Button.of(ButtonStyle.PRIMARY, "-", "Primary"),
+      Button.of(ButtonStyle.SECONDARY, "-", "Secondary"),
+      Button.of(ButtonStyle.SUCCESS, "-", "Success"),
+      Button.of(ButtonStyle.DANGER, "-", "Danger"),
       Button.of(ButtonStyle.LINK, "https://github.com/omardiaadev", "Link", Emoji.fromUnicode("🔗")));
   }
 
@@ -122,7 +127,8 @@ final class TranscriptTestUtil {
         Separator.createDivider(Separator.Spacing.SMALL),
 
         Section.of(
-          Button.link("https://github.com/omardiaadev", "Button"),
+          Button.link("https://github.com/omardiaadev/discord-channel-html-transcript", "Star The Project")
+                .withEmoji(Emoji.fromFormatted("⭐")),
           TextDisplay.of("""
                          # Big Header
                          ## Medium Header

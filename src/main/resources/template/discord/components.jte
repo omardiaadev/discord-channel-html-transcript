@@ -9,7 +9,7 @@
   @else
     @template.discord.embeds(guild = message.getGuild(), embeds = message.getEmbeds())
 
-    @for(var actionRow : message.getComponentTree().findAll(ActionRow.class))
+    @for(ActionRow actionRow : message.getComponentTree().findAll(ActionRow.class))
       @template.discord.components.v1.action-row(actionRow = actionRow)
     @endfor
   @endif

@@ -32,56 +32,24 @@
 </head>
 
 <body>
-<div class="header user-select-none">
-  <div class="bar">
-    <div class="bar__guild">
-      <img
-        src="${textChannel.getGuild().getIconUrl()}"
-        alt="${textChannel.getGuild().getName()}"
-        height="20"
-        width="20"
-      />
-
-      <div class="bar__guild__name">
-        ${textChannel.getGuild().getName()}
-      </div>
-    </div>
-  </div>
-
-  <section class="channel__header">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      height="20"
-      width="20"
-    >
-      <path
-        fill="#82838b"
-        fill-rule="evenodd"
-        d="M10.99 3.16A1 1 0 1 0 9 2.84L8.15 8H4a1 1 0 0 0 0 2h3.82l-.67 4H3a1 1 0 1 0 0 2h3.82l-.8 4.84a1 1 0 0 0 1.97.32L8.85 16h4.97l-.8 4.84a1 1 0 0 0 1.97.32l.86-5.16H20a1 1 0 1 0 0-2h-3.82l.67-4H21a1 1 0 1 0 0-2h-3.82l.8-4.84a1 1 0 1 0-1.97-.32L15.15 8h-4.97l.8-4.84ZM14.15 14l.67-4H9.85l-.67 4h4.97Z"
-      />
-    </svg>
-
-    <h1 class="channel__header__title">${textChannel.getName()}</h1>
-  </section>
-</div>
+@template.discord.ui.header(textChannel = textChannel)
 
 <ol class="channel__content">
-  !{var previousMessage = messages.getFirst();}
+  !{Message previousMessage = messages.getFirst();}
 
-  @for(var message : messages)
-    !{boolean isDifferentAuthor = !previousMessage.getAuthor().equals(message.getAuthor());}
-    !{boolean isDividerShown = previousMessage.equals(message) || (previousMessage.getTimeCreated().getDayOfYear() != message.getTimeCreated().getDayOfYear());}
+  @for(Message message : messages)
+    !{boolean showAuthor = !previousMessage.getAuthor().equals(message.getAuthor());}
+    !{boolean showDivider = previousMessage.equals(message) || (previousMessage.getTimeCreated().getDayOfYear() != message.getTimeCreated().getDayOfYear());}
 
-    @if(isDividerShown)
+    @if(showDivider)
       @template.discord.ui.divider(message = message)
     @endif
 
     <li class="message">
       @template.discord.ui.reference(message = message)
 
-      <div class="author__avatar__container user-select-none ${(isDifferentAuthor || isDividerShown) ? "message--different-author" : null}">
-        @if(isDifferentAuthor || isDividerShown)
+      <div class="author__avatar__container user-select-none ${(showAuthor || showDivider) ? "message--different-author" : null}">
+        @if(showAuthor || showDivider)
           <img
             src="${message.getAuthor().getEffectiveAvatarUrl()}"
             alt="Author Avatar"
@@ -93,7 +61,7 @@
       </div>
 
       <div>
-        @if(isDifferentAuthor || isDividerShown)
+        @if(showAuthor || showDivider)
           <h3 class="author">
             <a
               href="https://discord.com/users/${message.getAuthor().getId()}"
