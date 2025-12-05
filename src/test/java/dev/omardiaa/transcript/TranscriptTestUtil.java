@@ -78,15 +78,16 @@ final class TranscriptTestUtil {
     return List.of(
       new EmbedBuilder()
         .setAuthor("Author Name", AVATAR_URL_USER, AVATAR_URL_USER)
-        .setTitle("Title")
+        .setTitle("Title", "https://github.com/omardiaadev")
         .setDescription("Description")
-        .addField("#1 Field Name", "#1 Field Value", false)
-        .addField("#2 Field Name", "#2 Field Value", false)
+        .addField("#1 Field Name", "#1 Field Value", true)
+        .addBlankField(true)
+        .addField("#2 Field Name", "#2 Field Value", true)
         .setImage(AVATAR_URL_USER)
         .setThumbnail(AVATAR_URL_USER)
         .setFooter("Footer", AVATAR_URL_USER)
         .setTimestamp(TIME_D2)
-        .setColor(51200)
+        .setColor(21712)
         .build());
   }
 

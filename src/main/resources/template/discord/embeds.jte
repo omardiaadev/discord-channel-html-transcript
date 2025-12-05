@@ -26,9 +26,16 @@
         @endif
 
         @if(author.getName() != null)
-          <span class="embed__author__name">
-            ${author.getName()}
-          </span>
+          @if(author.getUrl() != null)
+            <a
+              href="${author.getUrl()}"
+              class="embed__author__name markup__link"
+            >
+              ${author.getName()}
+            </a>
+          @else
+            <span class="embed__author__name">${author.getName()}</span>
+          @endif
         @endif
       </div>
     @endif
@@ -36,7 +43,12 @@
     @if(embed.getTitle() != null)
       <div class="embed__title embed__margin">
         @if(embed.getUrl() != null)
-          <a href="${embed.getUrl()}">${embed.getTitle()}</a>
+          <a
+            href="${embed.getUrl()}"
+            class="markup__link"
+          >
+            ${embed.getTitle()}
+          </a>
         @else
           <span>${embed.getTitle()}</span>
         @endif
