@@ -88,7 +88,7 @@ dependencies {
 
 2. Use CSS in [style.css](src/test/resources/template/css/style.css) for live updates during development.
 
-3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/template/css/style.jte) when done.
+3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/template/style.jte) when done.
 
 ## Socials
 
