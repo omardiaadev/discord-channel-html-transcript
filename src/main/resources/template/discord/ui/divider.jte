@@ -4,7 +4,7 @@
 @param Message message
 
 <div class="divider user-select-none">
-    <span class="divider__content">
-      ${message.getTimeCreated().format(TranscriptConstants.DATE_LONG)}
-    </span>
+  <time class="divider__content">
+    ${message.getTimeCreated().format(TranscriptConstants.DATE_LONG)}
+  </time>
 </div>

@@ -3,7 +3,6 @@ package dev.omardiaa.transcript;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.components.actionrow.ActionRow;
 import net.dv8tion.jda.api.components.buttons.Button;
-import net.dv8tion.jda.api.components.buttons.ButtonStyle;
 import net.dv8tion.jda.api.components.container.Container;
 import net.dv8tion.jda.api.components.mediagallery.MediaGallery;
 import net.dv8tion.jda.api.components.mediagallery.MediaGalleryItem;
@@ -29,46 +28,18 @@ final class TranscriptTestUtil {
   public static List<Message> createMessages() {
     List<MessageEmbed> embeds = createMessageEmbeds();
 
-    Message message5 =
-      new MessageMockBuilder(AUTHOR_2).withEmbeds(embeds).withComponents(createComponentsV1(), false).build();
-
     return List.of(
       new MessageMockBuilder(AUTHOR_1)
-        .withTimeCreated(TIME_D1)
-        .withContent(
-          "**This** [Library](https://github.com/skywolfxp/discord-channel-html-transcript) __is__ *Awesome!*").build(),
-
-      new MessageMockBuilder(AUTHOR_2)
         .withComponents(createComponentsV2(), true)
         .withTimeCreated(TIME_D2)
+        .withTimeEdited(TIME_D2)
         .build(),
 
-      message5,
-
-      new MessageMockBuilder(AUTHOR_1)
-        .withAttachments(List.of(mockAttachment(true), mockAttachment(false)))
-        .withReactions(List.of(mockReactionUnicodeEmoji(), mockReactionCustomEmoji(), mockReactionRichCustomEmoji()))
-        .withReference(message5)
-        .build(),
+      new MessageMockBuilder(AUTHOR_2).withEmbeds(embeds).withComponents(createComponentsV1(), false).build(),
 
       new MessageMockBuilder(AUTHOR_2)
-        .withContent("""
-                     # Big Header
-                     ## Medium Header
-                     ### Small Header
-                     
-                     `System.out.println("discord-channel-html-transcript");`
-                     ```
-                     public static void main(String args[]) {
-                              System.out.println("discord-channel-html-transcript");
-                          }
-                     }
-                     ```
-                     
-                     **User Mentions:** <@545902760453996546> <@0>
-                     **Role Mentions:** <@&420> <@&0>
-                     **Channel Mentions:** <#420> <#0>
-                     """)
+        .withAttachments(List.of(mockAttachment(true), mockAttachment(false)))
+        .withReactions(List.of(mockReactionUnicodeEmoji(), mockReactionCustomEmoji(), mockReactionRichCustomEmoji()))
         .withInteractionMetadata(mockInteraction(AUTHOR_1))
         .build());
   }
@@ -94,11 +65,12 @@ final class TranscriptTestUtil {
   @NotNull
   public static List<Button> createButtons() {
     return List.of(
-      Button.of(ButtonStyle.PRIMARY, "-", "Primary"),
-      Button.of(ButtonStyle.SECONDARY, "-", "Secondary"),
-      Button.of(ButtonStyle.SUCCESS, "-", "Success"),
-      Button.of(ButtonStyle.DANGER, "-", "Danger"),
-      Button.of(ButtonStyle.LINK, "https://github.com/omardiaadev", "Link", Emoji.fromUnicode("🔗")));
+      Button.primary("-", "Primary"),
+      Button.secondary("-", "Secondary"),
+      Button.success("-", "Success"),
+      Button.danger("-", "Danger"),
+      Button.link("https://github.com/omardiaadev/discord-channel-html-transcript", "Star The Project")
+            .withEmoji(Emoji.fromUnicode("⭐")));
   }
 
   @NotNull
@@ -125,11 +97,10 @@ final class TranscriptTestUtil {
       Container.of(
         TextDisplay.of("# ComponentsV2"),
 
-        Separator.createDivider(Separator.Spacing.SMALL),
+        Separator.createDivider(Separator.Spacing.LARGE),
 
         Section.of(
-          Button.link("https://github.com/omardiaadev/discord-channel-html-transcript", "Star The Project")
-                .withEmoji(Emoji.fromFormatted("⭐")),
+          Button.link("https://github.com/omardiaadev", "Link"),
           TextDisplay.of("""
                          # Big Header
                          ## Medium Header
@@ -138,8 +109,8 @@ final class TranscriptTestUtil {
                          `System.out.println("discord-channel-html-transcript");`
                          ```
                          public static void main(String args[]) {
-                                  System.out.println("discord-channel-html-transcript");
-                              }
+                             System.out.println("Hello World!");
+                           }
                          }
                          ```
                          
@@ -148,13 +119,12 @@ final class TranscriptTestUtil {
                          **Channel Mentions:** <#420> <#0>
                          """)),
 
-        Separator.createDivider(Separator.Spacing.SMALL),
+        Separator.createDivider(Separator.Spacing.LARGE),
 
         Section.of(
           Thumbnail.fromUrl("https://avatars.githubusercontent.com/u/70555240"),
           TextDisplay.of("""
-                         # Section With Thumbnail
-                         Section
+                         **This** [Library](https://github.com/omardiaadev/discord-channel-html-transcript) __is__ *Awesome!*
                          """)),
 
         Separator.createDivider(Separator.Spacing.LARGE),

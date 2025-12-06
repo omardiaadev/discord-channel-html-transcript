@@ -5,14 +5,12 @@
 
 @param ActionRow actionRow
 
-<div class="action-rows user-select-none">
-  <div class="action-row">
-    @for(ActionComponent component : actionRow.getActionComponents())
-      @if(component instanceof Button button)
-        @template.discord.components.v1.button(button = button)
-      @elseif(component instanceof SelectMenu)
-        @template.discord.components.v1.select-menu()
-      @endif
-    @endfor
-  </div>
+<div class="action-row">
+  @for(ActionComponent actionComponent : actionRow.getActionComponents())
+    @if(actionComponent instanceof Button button)
+      @template.discord.components.v1.button(button = button)
+    @elseif(actionComponent instanceof SelectMenu)
+      @template.discord.components.v1.select-menu()
+    @endif
+  @endfor
 </div>

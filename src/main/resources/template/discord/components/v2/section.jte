@@ -1,15 +1,20 @@
-@import net.dv8tion.jda.api.components.thumbnail.Thumbnail
-@import net.dv8tion.jda.api.entities.Guild
-@import net.dv8tion.jda.api.components.buttons.Button
-@import net.dv8tion.jda.api.components.section.Section
 @import dev.omardiaa.transcript.TranscriptUtils
+@import net.dv8tion.jda.api.entities.Guild
+@import net.dv8tion.jda.api.components.section.Section
+@import net.dv8tion.jda.api.components.section.SectionContentComponentUnion
+@import net.dv8tion.jda.api.components.buttons.Button
+@import net.dv8tion.jda.api.components.thumbnail.Thumbnail
 
 @param Guild guild
 @param Section section
 
 <div class="section">
-  <div class="message__content markup">
-    $unsafe{TranscriptUtils.parseMarkup(guild, section.getContentComponents().getFirst().asTextDisplay().getContent())}
+  <div class="section__content">
+    @for(SectionContentComponentUnion contentComponent : section.getContentComponents())
+      <div class="message markup">
+        $unsafe{TranscriptUtils.parseMarkup(guild, contentComponent.asTextDisplay().getContent())}
+      </div>
+    @endfor
   </div>
 
   <div class="section__accessory">

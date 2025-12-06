@@ -4,5 +4,6 @@
 
 <div
   aria-hidden="${!separator.isDivider()}"
-  class="separator user-select-none ${separator.getSpacing() == Separator.Spacing.LARGE ? "separator--large" : null}"
+  data-separator-spacing="${separator.getSpacing().name()}"
+  class="separator user-select-none"
 ></div>

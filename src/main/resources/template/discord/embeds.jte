@@ -64,7 +64,10 @@
     @if(!embed.getFields().isEmpty())
       <div class="embed__fields">
         @for(MessageEmbed.Field field : embed.getFields())
-          <div class="embed__field" inline="${field.isInline()}">
+          <div
+            data-inline="${field.isInline()}"
+            class="embed__field"
+          >
             @if(field.getName() != null)
               <div class="embed__field__name">
                 <span>${field.getName()}</span>
@@ -111,8 +114,6 @@
           <img
             src="${embed.getFooter().getIconUrl()}"
             alt="Embed Footer Icon"
-            height="20"
-            width="20"
             class="embed__footer__icon"
           />
         @endif

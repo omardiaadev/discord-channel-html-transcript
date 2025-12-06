@@ -1,6 +1,5 @@
 @import java.util.List
 @import dev.omardiaa.transcript.TranscriptConstants
-@import dev.omardiaa.transcript.TranscriptUtils
 @import net.dv8tion.jda.api.entities.Message
 @import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 
@@ -32,37 +31,38 @@
 <body>
 @template.discord.ui.header(textChannel = textChannel)
 
-<ol class="channel__content">
+<ol style="padding: 0 1rem 1.5rem 1rem;">
   !{Message previousMessage = messages.getFirst();}
 
   @for(Message message : messages)
-    !{boolean showAuthor = !previousMessage.getAuthor().equals(message.getAuthor());}
     !{boolean showDivider = previousMessage.equals(message) || (previousMessage.getTimeCreated().getDayOfYear() != message.getTimeCreated().getDayOfYear());}
+    !{boolean showAuthor = showDivider || !previousMessage.getAuthor().equals(message.getAuthor()) || (message.getReferencedMessage() != null) || (message.getInteraction() != null);}
 
     @if(showDivider)
       @template.discord.ui.divider(message = message)
     @endif
 
-    <li class="message">
-      @template.discord.ui.reference(message = message)
+    <li class="message__container" data-show-author="${showAuthor}">
+      @template.discord.ui.reference(referencedMessage = message.getReferencedMessage(), interaction = message.getInteraction())
 
-      <div class="author__avatar__container user-select-none ${(showAuthor || showDivider) ? "message--different-author" : null}">
-        @if(showAuthor || showDivider)
+      <div class="author__avatar__container user-select-none">
+        @if(showAuthor)
           <img
             src="${message.getAuthor().getEffectiveAvatarUrl()}"
-            alt="Author Avatar"
+            alt="@${message.getAuthor().getName()}"
             class="author__avatar"
           />
         @else
-          <span class="message__timestamp">${message.getTimeCreated().format(TranscriptConstants.TIME_SHORT)}</span>
+          <time class="message__timestamp">${message.getTimeCreated().format(TranscriptConstants.TIME_SHORT)}</time>
         @endif
       </div>
 
       <div>
-        @if(showAuthor || showDivider)
+        @if(showAuthor)
           <h3 class="author">
             <a
               href="https://discord.com/users/${message.getAuthor().getId()}"
+              title="@${message.getAuthor().getName()}"
               class="author__name"
             >
               ${message.getAuthor().getEffectiveName()}
@@ -70,39 +70,25 @@
 
             @if(message.getAuthor().isBot())
               <span class="author__tag user-select-none">APP</span>
+            @elseif(message.getAuthor().isSystem())
+              <span class="author__tag user-select-none">SYSTEM</span>
             @endif
 
-            <time class="author__timestamp">
-              <time class="timestamp user-select-none">
-                ${message.getTimeCreated().format(TranscriptConstants.DATE_FULL)}
-              </time>
+            <div class="author__timestamp">
+              @template.discord.ui.timestamp(offsetDateTime = message.getTimeCreated())
 
-              ${message.getTimeCreated().format(TranscriptConstants.DATE_SHORT)}
-            </time>
+              <time>${message.getTimeCreated().format(TranscriptConstants.DATE_SHORT)}</time>
+            </div>
           </h3>
         @endif
 
-        <div
-          id="${message.getId()}"
-          class="message__content markup"
-        >
-          $unsafe{TranscriptUtils.parseMarkup(message.getGuild(), message.getContentRaw())}
-
-          @template.discord.attachments(message = message)
-
-          @if(message.getTimeEdited() != null)
-            <span class="message__edited user-select-none">
-              <time class="timestamp user-select-none">
-                ${message.getTimeEdited().format(TranscriptConstants.DATE_FULL)}
-              </time>
-              (edited)
-            </span>
-          @endif
-        </div>
+        @template.discord.message(message = message)
 
         @template.discord.components(message = message)
 
         @template.discord.reactions(reactions = message.getReactions())
+
+        @template.discord.message.time-edited(message = message)
       </div>
     </li>
     !{previousMessage = message;}

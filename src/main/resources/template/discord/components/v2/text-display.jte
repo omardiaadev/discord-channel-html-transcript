@@ -6,7 +6,7 @@
 @param TextDisplay textDisplay
 
 <div class="text-display">
-  <div class="message__content markup">
+  <div class="message markup">
     $unsafe{TranscriptUtils.parseMarkup(guild, textDisplay.getContent())}
   </div>
 </div>

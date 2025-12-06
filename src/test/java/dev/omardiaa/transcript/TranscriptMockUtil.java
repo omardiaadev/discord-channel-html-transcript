@@ -37,11 +37,13 @@ class TranscriptMockUtil {
   }
 
   @NotNull
-  public static User mockAuthor(String userId, String name, String avatarUrl, boolean isBot) {
+  public static User mockAuthor(String id, String name, String effectiveName, String effectiveAvatarUrl,
+                                boolean isBot) {
     User user = mock(User.class);
-    when(user.getId()).thenReturn(userId);
-    when(user.getEffectiveName()).thenReturn(name);
-    when(user.getEffectiveAvatarUrl()).thenReturn(avatarUrl);
+    when(user.getId()).thenReturn(id);
+    when(user.getName()).thenReturn(name);
+    when(user.getEffectiveName()).thenReturn(effectiveName);
+    when(user.getEffectiveAvatarUrl()).thenReturn(effectiveAvatarUrl);
     when(user.isBot()).thenReturn(isBot);
 
     return user;
@@ -118,7 +120,7 @@ class TranscriptMockUtil {
     Message.Interaction interaction = mock(Message.Interaction.class);
     when(interaction.getUser()).thenReturn(user);
     when(interaction.getType()).thenReturn(InteractionType.COMMAND);
-    when(interaction.getName()).thenReturn("command");
+    when(interaction.getName()).thenReturn("show-attachments");
 
     return interaction;
   }

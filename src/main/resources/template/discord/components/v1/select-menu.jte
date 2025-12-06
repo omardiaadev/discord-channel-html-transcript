@@ -1,4 +1,4 @@
-<div class="select-menu">
+<div class="select-menu user-select-none">
   <span>Make a selection</span>
 
   <svg

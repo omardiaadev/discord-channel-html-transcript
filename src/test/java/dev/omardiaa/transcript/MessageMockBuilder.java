@@ -56,6 +56,11 @@ final class MessageMockBuilder {
     return this;
   }
 
+  public MessageMockBuilder withTimeEdited(@NotNull OffsetDateTime timeEdited) {
+    when(message.getTimeEdited()).thenReturn(timeEdited);
+    return this;
+  }
+
   public MessageMockBuilder withComponents(@NotNull MessageComponentTree componentTree, boolean isUsingComponentsV2) {
     when(message.getComponentTree()).thenReturn(componentTree);
     when(message.getComponents()).thenReturn(componentTree.getComponents());

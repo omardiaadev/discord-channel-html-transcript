@@ -6,11 +6,11 @@
 @param List<MessageReaction> reactions
 
 @if(!reactions.isEmpty())
-  <div class="reactions">
+  <div class="reactions user-select-none">
     @for(MessageReaction reaction : reactions)
       !{EmojiUnion emoji = reaction.getEmoji();}
 
-      <div class="reaction user-select-none">
+      <div class="reaction">
         @if(emoji.getType() == Emoji.Type.CUSTOM)
           <img
             src="${emoji.asCustom().getImageUrl()}&animated=true"
@@ -18,7 +18,7 @@
             class="reaction__emoji"
           />
         @elseif(emoji.getType() == Emoji.Type.UNICODE)
-          <span class="reaction__emoji size-5">
+          <span class="reaction__emoji">
             &#x${emoji.asUnicode().getAsCodepoints().replace("U+", "")};
           </span>
         @endif
