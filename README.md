@@ -36,16 +36,34 @@ font that is the property of Discord Inc.**\
 
 ## Features
 
-- **Markdown**
-    - Standard Markdown
-    - [Discord Chat Formatting](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline)
+<details>
+    <summary>
+        <img src="https://img.shields.io/badge/NEW-FF2E2E" alt=""/>
+        <strong>ComponentsV2</strong>
+    </summary>
+    <ol>
+        <li>Container</li>
+        <li>Section</li>
+        <li>Text Display</li>
+        <li>Media Gallery</li>
+        <li>Separator</li>
+        <li>Action Row</li>
+    </ol>
+</details>
+<details>
+    <summary>
+        <strong>Markdown</strong>
+    </summary>
+    <ol>
+        <li>Standard Markup</li>
+        <li><a href="https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline">Discord Markdown</a></li>
+    </ol>
+</details>
+
 - **Attachments**
     - Images
     - Other Files
 - **Embeds**
-- **Action Rows**
-    - Buttons
-    - Select Menus
 - **Reactions**
 - **Referenced Message**
 - **Referenced Command**
