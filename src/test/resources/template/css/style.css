@@ -806,6 +806,11 @@
   grid-template-columns: 1fr auto;
 }
 
+.select-menu__placeholder {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .container {
   display: flex;
   overflow: hidden;

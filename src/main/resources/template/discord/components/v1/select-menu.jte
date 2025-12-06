@@ -1,5 +1,11 @@
+@import net.dv8tion.jda.api.components.selections.SelectMenu
+
+@param SelectMenu selectMenu
+
 <div class="select-menu user-select-none">
-  <span>Make a selection</span>
+  <span class="select-menu__placeholder">
+    ${selectMenu.getPlaceholder() == null ? "Make a selection" : selectMenu.getPlaceholder()}
+  </span>
 
   <svg
     xmlns="http://www.w3.org/2000/svg"
