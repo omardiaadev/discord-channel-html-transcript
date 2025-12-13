@@ -39,7 +39,7 @@ font that is the property of Discord Inc.**
 <ul>
     <li>
         <strong>ComponentsV2</strong>
-        <img height="14" src="https://img.shields.io/badge/NEW-FF2E2E" alt=""/>
+        <img src="https://img.shields.io/badge/NEW-FF2E2E" alt="NEW" height="12"/>
     </li>
     <li><strong>Markdown</strong></li>
     <li><strong>Attachments</strong></li>
@@ -79,7 +79,7 @@ dependencies {
 
 ## Development
 
-1. Run [TranscriptMockTest#render()](src/test/java/dev/omardiaa/transcript/TranscriptMockTest.java).\
+1. Run [TranscriptTest#render()](src/test/java/dev/omardiaa/transcript/TranscriptTest.java).\
    An HTML file will be created in:
     - **Windows:** `%USERPROFILE%\AppData\Local\Temp\discord-channel-html-transcript`
     - **macOS:** `/tmp/discord-channel-html-transcript`
