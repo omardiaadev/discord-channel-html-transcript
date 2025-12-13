@@ -30,16 +30,16 @@ Uses [**Java Discord API**](https://github.com/discord-jda/JDA)
 
 ## Legal Compliance
 
-**This project utilizes the [gg sans](https://my.corebook.io/1zObrQ89Q4wHhgFCfYIUhMUvmNf4XjxO/03-typography/download)
-font that is the property of Discord Inc.**\
-**I do not claim ownership of this font.**
+> [!IMPORTANT]
+> **This project utilizes the [gg sans](src/main/resources/font/ggsansvf-VF.woff)
+font that is the property of Discord Inc.**
 
 ## Features
 
 <ul>
     <li>
         <strong>ComponentsV2</strong>
-        <img height="12" src="https://img.shields.io/badge/NEW-FF2E2E" alt=""/>
+        <img height="14" src="https://img.shields.io/badge/NEW-FF2E2E" alt=""/>
     </li>
     <li><strong>Markdown</strong></li>
     <li><strong>Attachments</strong></li>
@@ -61,29 +61,29 @@ font that is the property of Discord Inc.**\
   <dependency>
     <groupId>dev.omardiaa</groupId>
     <artifactId>discord-channel-html-transcript</artifactId>
-    <version>${version}</version>
+    <version>4.0.0</version>
   </dependency>
 </dependencies>
 ```
 
 ```kts
+
 repositories {
   mavenCentral()
 }
 
 dependencies {
-  implementation("dev.omardiaa:discord-channel-html-transcript:${version}")
+  implementation("dev.omardiaa:discord-channel-html-transcript:4.0.0")
 }
 ```
 
 ## Development
 
-1. Run [TranscriptMockTest#render()](src/test/java/dev/omardiaa/transcript/TranscriptMockTest.java), A
-   `discord-channel-html-transcript` folder will be created under:
-
-    - **Windows:** `%USERPROFILE%\AppData\Local\Temp`
-    - **macOS:** `/tmp`
-    - **Linux:** `/tmp`
+1. Run [TranscriptMockTest#render()](src/test/java/dev/omardiaa/transcript/TranscriptMockTest.java).\
+   An HTML file will be created in:
+    - **Windows:** `%USERPROFILE%\AppData\Local\Temp\discord-channel-html-transcript`
+    - **macOS:** `/tmp/discord-channel-html-transcript`
+    - **Linux:** `/tmp/discord-channel-html-transcript`
 
 2. Use CSS in [style.css](src/test/resources/template/css/style.css) for live updates during development.
 
