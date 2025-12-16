@@ -1,4 +1,4 @@
-@import dev.omardiaa.transcript.TranscriptUtils
+@import dev.omardiaa.transcript.TranscriberUtils
 @import net.dv8tion.jda.api.entities.Guild
 @import net.dv8tion.jda.api.components.section.Section
 @import net.dv8tion.jda.api.components.section.SectionContentComponentUnion
@@ -12,7 +12,7 @@
   <div class="section__content">
     @for(SectionContentComponentUnion contentComponent : section.getContentComponents())
       <div class="message markup">
-        $unsafe{TranscriptUtils.parseMarkup(guild, contentComponent.asTextDisplay().getContent())}
+        $unsafe{TranscriberUtils.parseMarkup(guild, contentComponent.asTextDisplay().getContent())}
       </div>
     @endfor
   </div>

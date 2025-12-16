@@ -1,6 +1,6 @@
 @import java.util.List
-@import dev.omardiaa.transcript.TranscriptConstants
-@import dev.omardiaa.transcript.TranscriptUtils
+@import dev.omardiaa.transcript.TranscriberConstants
+@import dev.omardiaa.transcript.TranscriberUtils
 @import net.dv8tion.jda.api.entities.Guild
 @import net.dv8tion.jda.api.entities.MessageEmbed
 
@@ -29,7 +29,7 @@
           @if(author.getUrl() != null)
             <a
               href="${author.getUrl()}"
-              class="embed__author__name markup__link"
+              class="embed__author__name markup"
             >
               ${author.getName()}
             </a>
@@ -45,7 +45,7 @@
         @if(embed.getUrl() != null)
           <a
             href="${embed.getUrl()}"
-            class="markup__link"
+            class="markup"
           >
             ${embed.getTitle()}
           </a>
@@ -57,7 +57,7 @@
 
     @if(embed.getDescription() != null)
       <div class="embed__description embed__margin">
-        <span>$unsafe{TranscriptUtils.parseMarkup(guild, embed.getDescription())}</span>
+        <span>$unsafe{TranscriberUtils.parseMarkup(guild, embed.getDescription())}</span>
       </div>
     @endif
 
@@ -65,7 +65,7 @@
       <div class="embed__fields">
         @for(MessageEmbed.Field field : embed.getFields())
           <div
-            data-inline="${field.isInline()}"
+            data-embed-field-inline="${field.isInline()}"
             class="embed__field"
           >
             @if(field.getName() != null)
@@ -125,7 +125,7 @@
             @if(embed.getTimestamp() != null)
               <span>•</span>
 
-              <span>${embed.getTimestamp().format(TranscriptConstants.DATE_SHORT)}</span>
+              <span>${embed.getTimestamp().format(TranscriberConstants.DATE_SHORT)}</span>
             @endif
           </span>
         @endif

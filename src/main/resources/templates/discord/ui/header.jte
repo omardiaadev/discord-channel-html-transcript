@@ -1,22 +1,22 @@
-@import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
+@import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 
-@param TextChannel textChannel
+@param GuildMessageChannel channel
 
 <div class="header user-select-none">
-  <div class="bar">
-    <div class="bar__guild">
+  <div class="header__guild__container">
+    <div class="header__guild">
       <img
-        src="${textChannel.getGuild().getIconUrl()}"
-        alt="${textChannel.getGuild().getName()}"
+        src="${channel.getGuild().getIconUrl()}"
+        alt="${channel.getGuild().getName()}"
         height="20"
         width="20"
       />
 
-      <span class="bar__guild__name">${textChannel.getGuild().getName()}</span>
+      <span class="header__guild__name">${channel.getGuild().getName()}</span>
     </div>
   </div>
 
-  <section class="channel__header">
+  <section class="header__channel">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -30,6 +30,6 @@
       />
     </svg>
 
-    <h1 class="channel__header__title">${textChannel.getName()}</h1>
+    <h1 class="header__channel__title">${channel.getName()}</h1>
   </section>
 </div>

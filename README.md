@@ -1,15 +1,15 @@
-<h1 align="center">discord-channel-html-transcript</h1>
+<h1 align="center">Discord Channel HTML Transcript</h1>
 
-<p align="center"><strong>Java library to generate easily shareable HTML archives of channels, bringing back the familiar Discord visuals!</strong></p>
+<p align="center"><strong>Discord Java library to generate shareable HTML archives of channels, preserving the native Discord styles</strong></p>
 
 <p align="center">
-    <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Central Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
-    <a href="https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/omardiaadev/discord-channel-html-transcript?style=flat-square&label=LICENSE&color=0055D2&labelColor=0055D2"></a>
+    <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
+    <a href="https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/omardiaadev/discord-channel-html-transcript?style=flat-square&label=LICENSE&color=0055D2&labelColor=0055D2"></a>
 </p>
 
 ## About
 
-This Java library is the **most** up-to-date Transcript generator, displaying your favorite Discord look!\
+This is the **most** up-to-date Transcript generator, ensuring your file is consistent with Discord's styles!\
 Uses [**Java Discord API**](https://github.com/discord-jda/JDA)
 & [**Java Template Engine**](https://github.com/casid/jte/).
 
@@ -18,14 +18,14 @@ Uses [**Java Discord API**](https://github.com/discord-jda/JDA)
     <summary>
         <strong>Contents</strong>
     </summary>
-    <ol>
+    <ul>
         <li><a href="#legal-compliance">Legal Compliance</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#requirements">Requirements</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#development">Development</a></li>
         <li><a href="#socials">Socials</a></li>
-    </ol>
+    </ul>
 </details>
 
 ## Legal Compliance
@@ -79,15 +79,15 @@ dependencies {
 
 ## Development
 
-1. Run [TranscriptTest#render()](src/test/java/dev/omardiaa/transcript/TranscriptTest.java).\
+1. Run [TranscriberTest#generate()](src/test/java/dev/omardiaa/transcript/TranscriberTest.java).\
    An HTML file will be created in:
     - **Windows:** `%USERPROFILE%\AppData\Local\Temp\discord-channel-html-transcript`
     - **macOS:** `/tmp/discord-channel-html-transcript`
     - **Linux:** `/tmp/discord-channel-html-transcript`
 
-2. Use CSS in [style.css](src/test/resources/template/css/style.css) for live updates during development.
+2. Modify CSS in [style.css](src/test/resources/template/css/style.css) for live updates during development.
 
-3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/template/style.jte) when done.
+3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/templates/style.jte) when done.
 
 ## Socials
 

@@ -25,6 +25,7 @@
 
     <a
       href="https://discord.com/users/${author.getId()}"
+      title="@${author.getName()}"
       class="reference__author__name"
     >
       ${author.getEffectiveName()}

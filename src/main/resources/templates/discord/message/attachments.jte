@@ -1,10 +1,11 @@
+@import java.util.List
+@import dev.omardiaa.transcript.TranscriberUtils
 @import net.dv8tion.jda.api.entities.Message
-@import dev.omardiaa.transcript.TranscriptUtils
 
 @param Message message
 
-!{var images = message.getAttachments().stream().filter(Message.Attachment::isImage).toList();}
-!{var attachments = message.getAttachments().stream().filter(attachment -> !attachment.isImage()).toList();}
+!{List<Message.Attachment> images = message.getAttachments().stream().filter(Message.Attachment::isImage).toList();}
+!{List<Message.Attachment> files = message.getAttachments().stream().filter(a -> !a.isImage()).toList();}
 
 @if(!images.isEmpty())
   <div class="attachment__image image__container" data-count="${images.size()}">
@@ -14,8 +15,8 @@
   </div>
 @endif
 
-@for(Message.Attachment attachment : attachments)
-  <div class="attachment__file">
+@for(Message.Attachment file : files)
+  <div class="attachment__file__container">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 72 96"
@@ -32,15 +33,15 @@
       />
     </svg>
 
-    <div class="attachment__file__wrapper">
+    <div class="attachment__file">
       <a
-        href="${attachment.getUrl()}"
+        href="${file.getUrl()}"
         class="attachment__file__name"
       >
-        ${attachment.getFileName()}
+        ${file.getFileName()}
       </a>
 
-      <span class="attachment__file__size">${TranscriptUtils.formatBytes(attachment.getSize())}</span>
+      <span class="attachment__file__size">${TranscriberUtils.formatBytes(file.getSize())}</span>
     </div>
   </div>
 @endfor

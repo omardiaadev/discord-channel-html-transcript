@@ -15,87 +15,81 @@ import net.dv8tion.jda.api.components.tree.MessageComponentTree;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Collections;
 import java.util.List;
 
-import static dev.omardiaa.transcript.Constants.*;
-import static dev.omardiaa.transcript.TranscriptMockUtil.*;
+import static dev.omardiaa.transcript.TranscriberTestConstants.*;
 
-final class TranscriptTestUtil {
-  @NotNull
-  public static List<Message> createMessages() {
-    List<MessageEmbed> embeds = createMessageEmbeds();
+class TranscriberTestUtil {
+  @NonNull
+  static List<Message> createMessages() {
+    Message message = new MessageMockBuilder(AUTHOR_1)
+      .withComponents(createComponentsV2(), true)
+      .withTimeCreated(TIME_D2)
+      .withTimeEdited(TIME_D2)
+      .build();
 
     return List.of(
-      new MessageMockBuilder(AUTHOR_1)
-        .withComponents(createComponentsV2(), true)
-        .withTimeCreated(TIME_D2)
-        .withTimeEdited(TIME_D2)
+      new MessageMockBuilder(AUTHOR_2)
+        .withAttachments(List.of(TranscriberMockUtil.mockAttachment(true), TranscriberMockUtil.mockAttachment(false)))
+        .withReactions(Emoji.fromUnicode("U+1F49A"), Emoji.fromCustom("catDance", 1364983213554008146L, true))
+        .withInteractionMetadata(TranscriberMockUtil.mockInteraction(AUTHOR_1))
         .build(),
 
-      new MessageMockBuilder(AUTHOR_2).withEmbeds(embeds).withComponents(createComponentsV1(), false).build(),
-
       new MessageMockBuilder(AUTHOR_2)
-        .withAttachments(List.of(mockAttachment(true), mockAttachment(false)))
-        .withReactions(List.of(mockReactionUnicodeEmoji(), mockReactionCustomEmoji(), mockReactionRichCustomEmoji()))
-        .withInteractionMetadata(mockInteraction(AUTHOR_1))
-        .build());
+        .withMessageEmbeds(createMessageEmbed())
+        .withComponents(createComponentsV1(), false)
+        .withReferencedMessage(message)
+        .build(),
+
+      message);
   }
 
-  @NotNull
-  public static List<MessageEmbed> createMessageEmbeds() {
-    return List.of(
-      new EmbedBuilder()
-        .setAuthor("Author Name", AVATAR_URL_USER, AVATAR_URL_USER)
-        .setTitle("Title", "https://github.com/omardiaadev")
-        .setDescription("Description")
-        .addField("#1 Field Name", "#1 Field Value", true)
-        .addBlankField(true)
-        .addField("#2 Field Name", "#2 Field Value", true)
-        .setImage(AVATAR_URL_USER)
-        .setThumbnail(AVATAR_URL_USER)
-        .setFooter("Footer", AVATAR_URL_USER)
-        .setTimestamp(TIME_D2)
-        .setColor(21712)
-        .build());
+  @NonNull
+  static MessageEmbed createMessageEmbed() {
+    return new EmbedBuilder()
+      .setAuthor("Author Name", AVATAR_URL_USER, AVATAR_URL_USER)
+      .setTitle("Title", "https://github.com/omardiaadev")
+      .setDescription("Description")
+      .addField("#1 Field Name", "#1 Field Value", true)
+      .addBlankField(true)
+      .addField("#2 Field Name", "#2 Field Value", true)
+      .setImage(AVATAR_URL_USER)
+      .setThumbnail(AVATAR_URL_USER)
+      .setFooter("Footer", AVATAR_URL_USER)
+      .setTimestamp(TIME_D2)
+      .setColor(21712)
+      .build();
   }
 
-  @NotNull
-  public static List<Button> createButtons() {
+  @NonNull
+  static List<Button> createButtons() {
     return List.of(
-      Button.primary("-", "Primary"),
-      Button.secondary("-", "Secondary"),
-      Button.success("-", "Success"),
-      Button.danger("-", "Danger"),
+      Button.primary("-", "All"),
+      Button.secondary("-", "Button"),
+      Button.success("-", "Variants"),
+      Button.danger("-", "Displayed"),
       Button.link("https://github.com/omardiaadev/discord-channel-html-transcript", "Star The Project")
             .withEmoji(Emoji.fromUnicode("⭐")));
   }
 
-  @NotNull
-  public static MediaGallery createMediaGallery(int mediaGalleryItemCount) {
-    return MediaGallery.of(Collections.nCopies(
-      mediaGalleryItemCount, MediaGalleryItem.fromUrl("https://avatars.githubusercontent.com/u/70555240")));
-  }
-
-  @NotNull
-  public static MessageComponentTree createComponentsV1() {
+  @NonNull
+  static MessageComponentTree createComponentsV1() {
     List<Button> buttons = createButtons();
-
     List<Button> buttonsDisabled = buttons.stream().map(Button::asDisabled).toList();
-
     StringSelectMenu selectMenu = StringSelectMenu.create("-").addOption("Label", "Value").build();
 
     return MessageComponentTree.of(
       List.of(ActionRow.of(buttons), ActionRow.of(buttonsDisabled), ActionRow.of(selectMenu)));
   }
 
-  @NotNull
-  public static MessageComponentTree createComponentsV2() {
+  @NonNull
+  static MessageComponentTree createComponentsV2() {
     return MessageComponentTree.of(
       Container.of(
-        TextDisplay.of("# ComponentsV2"),
+        TextDisplay.of("# ComponentsV2 Are Here"),
 
         Separator.createDivider(Separator.Spacing.LARGE),
 
@@ -114,23 +108,29 @@ final class TranscriptTestUtil {
                          }
                          ```
                          
-                         **User Mentions:** <@545902760453996546> <@0>
-                         **Role Mentions:** <@&420> <@&0>
-                         **Channel Mentions:** <#420> <#0>
+                         **Users:** <@974748803305455627> <@545902760453996546>
+                         **Roles:** <@&420> <@&0>
+                         **Channels:** <#420> <#0>
+                         -# Subtext
                          """)),
 
         Separator.createDivider(Separator.Spacing.LARGE),
 
         Section.of(
           Thumbnail.fromUrl("https://avatars.githubusercontent.com/u/70555240"),
-          TextDisplay.of("""
-                         **This** [Library](https://github.com/omardiaadev/discord-channel-html-transcript) __is__ *Awesome!*
-                         """)),
+          TextDisplay.of(
+            "**This** [Library](https://github.com/omardiaadev/discord-channel-html-transcript) __is__ *Awesome!*")),
 
         Separator.createDivider(Separator.Spacing.LARGE),
 
         ActionRow.of(createButtons())),
 
-      Container.of(createMediaGallery(3)));
+      Container.of(
+        TextDisplay.of("# Dynamic Media Gallery"),
+
+        Separator.createDivider(Separator.Spacing.SMALL),
+
+        MediaGallery.of(
+          Collections.nCopies(3, MediaGalleryItem.fromUrl("https://avatars.githubusercontent.com/u/70555240")))));
   }
 }

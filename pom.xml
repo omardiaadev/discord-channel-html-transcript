@@ -9,10 +9,10 @@
   <version>4.0.0</version>
 
   <name>
-    discord-channel-html-transcript
+    Discord Channel HTML Transcript
   </name>
   <description>
-    Java library to generate easily shareable HTML archives of channels, bringing back the familiar Discord visuals!
+    Discord Java library to generate shareable HTML archives of channels, preserving the native Discord styles.
   </description>
   <url>
     https://github.com/omardiaadev/discord-channel-html-transcript
@@ -57,7 +57,7 @@
     <dependency>
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
-      <version>6.1.2</version>
+      <version>6.2.0</version>
       <exclusions>
         <exclusion>
           <groupId>club.minnced</groupId>
@@ -80,21 +80,27 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.5.21</version>
+      <version>1.5.22</version>
       <scope>compile</scope>
     </dependency>
 
     <dependency>
+      <groupId>org.jspecify</groupId>
+      <artifactId>jspecify</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
+      <artifactId>junit-jupiter</artifactId>
       <version>6.0.1</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>5.20.0</version>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>5.21.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -105,7 +111,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.14.1</version>
-
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
@@ -116,11 +121,9 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.12.0</version>
-
         <executions>
           <execution>
             <id>attach-javadocs</id>
-
             <goals>
               <goal>jar</goal>
             </goals>
@@ -132,11 +135,9 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
         <version>3.3.1</version>
-
         <executions>
           <execution>
             <id>attach-sources</id>
-
             <goals>
               <goal>jar-no-fork</goal>
             </goals>
@@ -148,13 +149,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>3.2.8</version>
-
         <executions>
           <execution>
             <id>sign-artifacts</id>
-
             <phase>verify</phase>
-
             <goals>
               <goal>sign</goal>
             </goals>
@@ -166,9 +164,7 @@
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
         <version>0.9.0</version>
-
         <extensions>true</extensions>
-
         <configuration>
           <publishingServerId>central</publishingServerId>
           <autoPublish>true</autoPublish>
@@ -179,20 +175,18 @@
         <groupId>gg.jte</groupId>
         <artifactId>jte-maven-plugin</artifactId>
         <version>${jte.version}</version>
-
         <configuration>
-          <sourceDirectory>${project.basedir}/src/main/resources/template</sourceDirectory>
+          <sourceDirectory>${project.basedir}/src/main/resources/templates</sourceDirectory>
           <targetDirectory>${project.build.directory}/classes</targetDirectory>
           <trimControlStructures>true</trimControlStructures>
+          <binaryStaticContent>true</binaryStaticContent>
           <contentType>Html</contentType>
         </configuration>
-
         <executions>
           <execution>
-            <phase>process-classes</phase>
-
+            <phase>generate-sources</phase>
             <goals>
-              <goal>precompile</goal>
+              <goal>generate</goal>
             </goals>
           </execution>
         </executions>
@@ -202,15 +196,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.6.2</version>
-
         <executions>
           <execution>
             <id>enforce-maven</id>
-
             <goals>
               <goal>enforce</goal>
             </goals>
-
             <configuration>
               <rules>
                 <requireMavenVersion>
@@ -227,7 +218,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.4</version>
-
         <configuration>
           <argLine>-XX:+EnableDynamicAgentLoading</argLine>
         </configuration>

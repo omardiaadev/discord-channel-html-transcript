@@ -1,17 +1,17 @@
 @import java.util.List
-@import dev.omardiaa.transcript.TranscriptConstants
+@import dev.omardiaa.transcript.TranscriberConstants
 @import net.dv8tion.jda.api.entities.Message
-@import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
+@import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel;
 
+@param GuildMessageChannel channel
 @param List<Message> messages
-@param TextChannel textChannel
 @param String devStyles
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>#${textChannel.getName()} | ${textChannel.getGuild().getName()}</title>
+  <title>#${channel.getName()} | ${channel.getGuild().getName()}</title>
 
   <link
     rel="icon"
@@ -29,7 +29,7 @@
 </head>
 
 <body>
-@template.discord.ui.header(textChannel = textChannel)
+@template.discord.ui.header(channel = channel)
 
 <ol style="padding: 0 1rem 1.5rem 1rem;">
   !{Message previousMessage = messages.getFirst();}
@@ -53,7 +53,7 @@
             class="author__avatar"
           />
         @else
-          <time class="message__timestamp">${message.getTimeCreated().format(TranscriptConstants.TIME_SHORT)}</time>
+          <time class="message__timestamp">${message.getTimeCreated().format(TranscriberConstants.TIME_SHORT)}</time>
         @endif
       </div>
 
@@ -77,20 +77,15 @@
             <div class="author__timestamp">
               @template.discord.ui.timestamp(offsetDateTime = message.getTimeCreated())
 
-              <time>${message.getTimeCreated().format(TranscriptConstants.DATE_SHORT)}</time>
+              <time>${message.getTimeCreated().format(TranscriberConstants.DATE_SHORT)}</time>
             </div>
           </h3>
         @endif
 
         @template.discord.message(message = message)
-
-        @template.discord.components(message = message)
-
-        @template.discord.reactions(reactions = message.getReactions())
-
-        @template.discord.message.time-edited(message = message)
       </div>
     </li>
+
     !{previousMessage = message;}
   @endfor
 </ol>

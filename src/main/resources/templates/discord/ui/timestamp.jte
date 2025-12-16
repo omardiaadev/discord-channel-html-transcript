@@ -1,10 +1,10 @@
 @import java.time.OffsetDateTime
-@import dev.omardiaa.transcript.TranscriptConstants
+@import dev.omardiaa.transcript.TranscriberConstants
 
 @param OffsetDateTime offsetDateTime
 
 <div class="timestamp">
-  <time>${offsetDateTime.format(TranscriptConstants.DATE_FULL)}</time>
+  <time>${offsetDateTime.format(TranscriberConstants.DATE_FULL)}</time>
 
   <div class="timestamp__caret">
     <svg

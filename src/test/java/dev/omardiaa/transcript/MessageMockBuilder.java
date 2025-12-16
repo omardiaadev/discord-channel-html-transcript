@@ -2,21 +2,24 @@ package dev.omardiaa.transcript;
 
 import net.dv8tion.jda.api.components.tree.MessageComponentTree;
 import net.dv8tion.jda.api.entities.*;
-import org.jetbrains.annotations.NotNull;
+import net.dv8tion.jda.api.entities.emoji.Emoji;
+import net.dv8tion.jda.api.entities.emoji.EmojiUnion;
+import org.jspecify.annotations.NonNull;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static dev.omardiaa.transcript.Constants.TIME_D2;
-import static dev.omardiaa.transcript.TranscriptMockUtil.mockGuild;
+import static dev.omardiaa.transcript.TranscriberMockUtil.mockGuild;
+import static dev.omardiaa.transcript.TranscriberTestConstants.TIME_D2;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-final class MessageMockBuilder {
+class MessageMockBuilder {
   private final Message message = mock(Message.class);
 
-  public MessageMockBuilder(@NotNull User author) {
+  MessageMockBuilder(@NonNull User author) {
     Guild guild = mockGuild();
 
     when(message.getGuild()).thenReturn(guild);
@@ -26,42 +29,53 @@ final class MessageMockBuilder {
     when(message.getId()).thenReturn(String.valueOf(new Random().nextLong(100000000000000000L, 999999999999999999L)));
   }
 
-  public MessageMockBuilder withContent(@NotNull String contentRaw) {
+  MessageMockBuilder withContent(@NonNull String contentRaw) {
     when(message.getContentRaw()).thenReturn(contentRaw);
     return this;
   }
 
-  public MessageMockBuilder withEmbeds(@NotNull List<MessageEmbed> embeds) {
-    when(message.getEmbeds()).thenReturn(embeds);
+  MessageMockBuilder withMessageEmbeds(@NonNull MessageEmbed... embeds) {
+    when(message.getEmbeds()).thenReturn(List.of(embeds));
     return this;
   }
 
-  public MessageMockBuilder withAttachments(@NotNull List<Message.Attachment> attachments) {
+  MessageMockBuilder withAttachments(@NonNull List<Message.Attachment> attachments) {
     when(message.getAttachments()).thenReturn(attachments);
     return this;
   }
 
-  public MessageMockBuilder withReactions(@NotNull List<MessageReaction> messageReactions) {
-    when(message.getReactions()).thenReturn(messageReactions);
+  MessageMockBuilder withReactions(@NonNull Emoji... emojis) {
+    List<MessageReaction> reactions = new ArrayList<>();
+
+    for (Emoji emoji : emojis) {
+      MessageReaction reaction = mock(MessageReaction.class);
+      when(reaction.getEmoji()).thenReturn((EmojiUnion) emoji);
+      when(reaction.getCount()).thenReturn(69);
+
+      reactions.add(reaction);
+    }
+
+    when(message.getReactions()).thenReturn(reactions);
+
     return this;
   }
 
-  public MessageMockBuilder withReference(@NotNull Message referencedMessage) {
+  MessageMockBuilder withReferencedMessage(@NonNull Message referencedMessage) {
     when(message.getReferencedMessage()).thenReturn(referencedMessage);
     return this;
   }
 
-  public MessageMockBuilder withTimeCreated(@NotNull OffsetDateTime timeCreated) {
+  MessageMockBuilder withTimeCreated(@NonNull OffsetDateTime timeCreated) {
     when(message.getTimeCreated()).thenReturn(timeCreated);
     return this;
   }
 
-  public MessageMockBuilder withTimeEdited(@NotNull OffsetDateTime timeEdited) {
+  MessageMockBuilder withTimeEdited(@NonNull OffsetDateTime timeEdited) {
     when(message.getTimeEdited()).thenReturn(timeEdited);
     return this;
   }
 
-  public MessageMockBuilder withComponents(@NotNull MessageComponentTree componentTree, boolean isUsingComponentsV2) {
+  MessageMockBuilder withComponents(@NonNull MessageComponentTree componentTree, boolean isUsingComponentsV2) {
     when(message.getComponentTree()).thenReturn(componentTree);
     when(message.getComponents()).thenReturn(componentTree.getComponents());
     when(message.isUsingComponentsV2()).thenReturn(isUsingComponentsV2);
@@ -69,12 +83,12 @@ final class MessageMockBuilder {
   }
 
   @SuppressWarnings("deprecation")
-  public MessageMockBuilder withInteractionMetadata(@NotNull Message.Interaction interaction) {
+  MessageMockBuilder withInteractionMetadata(Message.@NonNull Interaction interaction) {
     when(message.getInteraction()).thenReturn(interaction);
     return this;
   }
 
-  public Message build() {
+  Message build() {
     return message;
   }
 }

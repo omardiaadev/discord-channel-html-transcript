@@ -29,7 +29,7 @@
       @endfor
     </div>
   @else
-    @template.discord.embeds(guild = message.getGuild(), embeds = message.getEmbeds())
+    @template.discord.message.embeds(guild = message.getGuild(), embeds = message.getEmbeds())
 
     @for(ActionRow actionRow : message.getComponentTree().findAll(ActionRow.class))
       @template.discord.components.v1.action-row(actionRow = actionRow)
