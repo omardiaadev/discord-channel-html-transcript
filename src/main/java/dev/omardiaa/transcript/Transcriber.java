@@ -6,8 +6,6 @@ import gg.jte.output.Utf8ByteOutput;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,8 +18,6 @@ import java.util.concurrent.CompletableFuture;
  * Uses <a href="https://github.com/casid/jte/">Java Template Engine</a> for HTML generation.
  */
 public class Transcriber {
-  private static final Logger LOGGER = LoggerFactory.getLogger(Transcriber.class);
-
   private final TemplateEngine templateEngine;
 
   /**
@@ -32,6 +28,14 @@ public class Transcriber {
     this.templateEngine = TemplateEngine.createPrecompiled(ContentType.Html);
   }
 
+  /**
+   * Constructs {@link Transcriber} with the specified {@code templateEngine}.
+   * <p>
+   * This constructor is only used during testing.
+   *
+   * @param templateEngine
+   *   The {@link TemplateEngine} used for transcription.
+   */
   Transcriber(TemplateEngine templateEngine) {
     this.templateEngine = templateEngine;
   }
@@ -67,8 +71,6 @@ public class Transcriber {
       if (messages.isEmpty()) {
         throw new IllegalArgumentException("'#%s' contains no messages.".formatted(channel.getName()));
       }
-
-      LOGGER.debug("Found {} messages.", messages.size());
 
       Map<String, Object> params = new HashMap<>();
       params.put("channel", channel);
