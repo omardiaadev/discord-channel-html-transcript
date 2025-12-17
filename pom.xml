@@ -12,7 +12,7 @@
     Discord Channel HTML Transcript
   </name>
   <description>
-    Discord Java library to generate shareable HTML archives of channels, preserving the native Discord styles.
+    Discord Java library for generating shareable HTML archives of channels, preserving the native Discord styles.
   </description>
   <url>
     https://github.com/omardiaadev/discord-channel-html-transcript

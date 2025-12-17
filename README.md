@@ -1,6 +1,6 @@
 <h1 align="center">Discord Channel HTML Transcript</h1>
 
-<p align="center"><strong>Discord Java library to generate shareable HTML archives of channels, preserving the native Discord styles</strong></p>
+<p align="center"><strong>Discord Java library for generating shareable HTML archives of channels, preserving the native Discord styles</strong></p>
 
 <p align="center">
     <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
@@ -52,7 +52,7 @@ font that is the property of Discord Inc.**
 ## Preview
 
 <details>
-    <summary><strong>Click To Show</strong></summary>
+    <summary><strong>Click To View</strong></summary>
     <ul>
         <li>
             <strong>ComponentsV2</strong>
