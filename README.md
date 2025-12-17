@@ -15,11 +15,13 @@ Uses [**Java Discord API**](https://github.com/discord-jda/JDA)
 
 
 <details>
-    <summary><strong>Contents</strong></summary>
+    <summary>
+        <strong>Contents</strong>
+    </summary>
     <ul>
         <li><a href="#legal-compliance">Legal Compliance</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#preview">Preview</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#development">Development</a></li>
         <li><a href="#socials">Socials</a></li>
@@ -71,11 +73,13 @@ font that is the property of Discord Inc.**
     </ul>
 </details>
 
-## Requirements
+## Installation
+
+##### Requirements
 
 - **Java 21+**
 
-## Installation
+##### Usage
 
 ```xml
 
