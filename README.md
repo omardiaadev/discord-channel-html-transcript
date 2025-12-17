@@ -47,8 +47,10 @@ font that is the property of Discord Inc.**
     <li><strong>Referenced Command</strong></li>
 </ul>
 
+## Preview
+
 <details>
-    <summary><h1>Preview</h1></summary>
+    <summary><strong>Click To Show</strong></summary>
     <ul>
         <li>
             <strong>ComponentsV2</strong>
