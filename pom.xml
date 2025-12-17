@@ -9,7 +9,7 @@
   <version>4.0.0</version>
 
   <name>
-    Discord Channel HTML Transcript
+    discord-channel-html-transcript
   </name>
   <description>
     Discord Java library for generating shareable HTML archives of channels, preserving the native Discord styles.

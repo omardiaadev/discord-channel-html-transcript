@@ -56,7 +56,7 @@ class TranscriberMockUtil {
 
     MessagePaginationAction messagePaginationAction = mock(MessagePaginationAction.class);
     when(channel.getIterableHistory()).thenReturn(messagePaginationAction);
-
+    when(channel.getIterableHistory().isEmpty()).thenReturn(messages.isEmpty());
     when(messagePaginationAction.takeWhileAsync(ArgumentMatchers.any()))
       .thenReturn(CompletableFuture.completedFuture(messages));
 

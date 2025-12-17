@@ -3,6 +3,7 @@ package dev.omardiaa.transcript;
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.resolve.ResourceCodeResolver;
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,15 +17,14 @@ import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TranscriberTest {
-  AutoCloseable mocks;
-  Transcriber transcriber;
+  private final Path tempDir = Path.of(System.getProperty("java.io.tmpdir")).resolve("discord-channel-html-transcript");
+  private final String testStyle = new File("src/test/resources/template/css/style.css").getAbsolutePath();
 
-  Path tempDir = Path.of(System.getProperty("java.io.tmpdir")).resolve("discord-channel-html-transcript");
-  String testStyle = new File("src/test/resources/template/css/style.css").getAbsolutePath();
+  private AutoCloseable mocks;
+  private Transcriber transcriber;
 
   @BeforeEach
   void setUp() throws IOException {
@@ -47,21 +47,19 @@ class TranscriberTest {
 
   @Test
   void transcribe() {
-    transcriber.transcribe(TranscriberMockUtil.mockChannel(TranscriberTestUtil.createMessages()), testStyle)
-               .thenAccept(transcript -> {
-                 try {
-                   transcript.toFile(tempDir.resolve("transcript.html").toFile());
-                 } catch (IOException e) {
-                   throw new RuntimeException(e);
-                 }
-               });
+    GuildMessageChannel channel = TranscriberMockUtil.mockChannel(TranscriberTestUtil.createMessages());
+
+    transcriber.transcribe(channel, testStyle).thenAccept(
+      transcript -> assertDoesNotThrow(() -> transcript.toFile(tempDir.resolve("transcript.html").toFile())));
   }
 
   @Test
   void transcribeThrowsIfEmpty() {
-    CompletableFuture<Transcript> future = transcriber.transcribe(
-      TranscriberMockUtil.mockChannel(Collections.emptyList()), testStyle);
+    GuildMessageChannel channel = TranscriberMockUtil.mockChannel(Collections.emptyList());
 
-    assertInstanceOf(IllegalArgumentException.class, assertThrows(ExecutionException.class, future::get).getCause());
+    CompletableFuture<Transcript> future = transcriber.transcribe(channel, testStyle);
+
+    ExecutionException ex = assertThrows(ExecutionException.class, future::get);
+    assertInstanceOf(IllegalArgumentException.class, ex.getCause());
   }
 }

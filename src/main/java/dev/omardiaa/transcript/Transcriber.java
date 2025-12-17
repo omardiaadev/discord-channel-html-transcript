@@ -45,9 +45,9 @@ public class Transcriber {
    *   The {@link GuildMessageChannel} to transcribe.
    *
    * @return A {@link CompletableFuture} of the transcribed {@link Transcript}.
-   *
-   * @throws IllegalArgumentException
-   *   If {@code channel} contains no messages.
+   * <p>
+   * The future completes exceptionally with {@link IllegalArgumentException}
+   * if the specified {@code channel} contains no messages.
    */
   @NonNull
   public CompletableFuture<Transcript> transcribe(@NonNull GuildMessageChannel channel) {
@@ -61,15 +61,16 @@ public class Transcriber {
    *   The path to the test {@code style.css}, only specified during testing.
    *
    * @return A {@link CompletableFuture} of the transcribed {@link Transcript}.
-   *
-   * @throws IllegalArgumentException
-   *   If {@code channel} contains no messages.
+   * <p>
+   * The future completes exceptionally with {@link IllegalArgumentException}
+   * if the specified {@code channel} contains no messages.
    */
   @NonNull
   CompletableFuture<Transcript> transcribe(@NonNull GuildMessageChannel channel, @Nullable String testStyle) {
-    return channel.getIterableHistory().takeWhileAsync(Objects::nonNull).thenApply(messages -> {
+    return channel.getIterableHistory().takeWhileAsync(Objects::nonNull).thenComposeAsync(messages -> {
       if (messages.isEmpty()) {
-        throw new IllegalArgumentException("'#%s' contains no messages.".formatted(channel.getName()));
+        return CompletableFuture.failedFuture(
+          new IllegalArgumentException("'#%s' contains no messages.".formatted(channel.getName())));
       }
 
       Map<String, Object> params = new HashMap<>();
@@ -80,7 +81,7 @@ public class Transcriber {
       Utf8ByteOutput output = new Utf8ByteOutput();
       templateEngine.render("transcript.jte", params, output);
 
-      return new Transcript(output, channel.getName());
+      return CompletableFuture.completedFuture(new Transcript(output, channel.getName()));
     });
   }
 }
