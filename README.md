@@ -15,9 +15,7 @@ Uses [**Java Discord API**](https://github.com/discord-jda/JDA)
 
 
 <details>
-    <summary>
-        <strong>Contents</strong>
-    </summary>
+    <summary><strong>Contents</strong></summary>
     <ul>
         <li><a href="#legal-compliance">Legal Compliance</a></li>
         <li><a href="#features">Features</a></li>
@@ -48,6 +46,28 @@ font that is the property of Discord Inc.**
     <li><strong>Referenced Message</strong></li>
     <li><strong>Referenced Command</strong></li>
 </ul>
+
+<details>
+    <summary><h1>Preview</h1></summary>
+    <ul>
+        <li>
+            <strong>ComponentsV2</strong>
+            <img src="assets/preview-1.png" alt="Preview #1"/>
+        </li>
+        <li>
+            <strong>Embeds & Other Components</strong>
+            <img src="assets/preview-2.png" alt="Preview #2"/>
+        </li>
+        <li>
+            <strong>Message</strong>
+            <img src="assets/preview-3.png" alt="Preview #3"/>
+        </li>
+        <li>
+            <strong>Full Preview</strong>
+            <img src="assets/preview-4.png" alt="Preview #4"/>
+        </li>
+    </ul>
+</details>
 
 ## Requirements
 
