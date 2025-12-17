@@ -133,9 +133,9 @@ public final class TranscriberUtils {
 
   /**
    * @param bytes
-   *   Number of bytes to parse
+   *   Number of bytes to parse.
    *
-   * @return {@link String} Parsed String in format: {@code 1024 byte/KB/MB/GB}
+   * @return {@link String} Parsed String as {@code 1024 byte/KB/MB/GB}.
    */
   @NonNull
   public static String formatBytes(int bytes) {
@@ -150,15 +150,6 @@ public final class TranscriberUtils {
     }
   }
 
-  /**
-   * Escapes HTML Characters for XSS Protection
-   *
-   * @param message
-   *   The Message Content you want to escape
-   *
-   * @return {@link String}
-   * <br>The Escaped Message Content
-   */
   @NonNull
   private static String escapeMessage(@NonNull String message) {
     StringOutput stringOutput = new StringOutput();

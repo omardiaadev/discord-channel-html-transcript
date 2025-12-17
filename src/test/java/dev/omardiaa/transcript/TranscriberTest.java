@@ -24,7 +24,7 @@ class TranscriberTest {
   Transcriber transcriber;
 
   Path tempDir = Path.of(System.getProperty("java.io.tmpdir")).resolve("discord-channel-html-transcript");
-  String devStyles = new File("src/test/resources/template/css/style.css").getAbsolutePath();
+  String testStyle = new File("src/test/resources/template/css/style.css").getAbsolutePath();
 
   @BeforeEach
   void setUp() throws IOException {
@@ -46,8 +46,8 @@ class TranscriberTest {
   }
 
   @Test
-  void generate() {
-    transcriber.generate(TranscriberMockUtil.mockChannel(TranscriberTestUtil.createMessages()), devStyles)
+  void transcribe() {
+    transcriber.transcribe(TranscriberMockUtil.mockChannel(TranscriberTestUtil.createMessages()), testStyle)
                .thenAccept(transcript -> {
                  try {
                    transcript.toFile(tempDir.resolve("transcript.html").toFile());
@@ -58,9 +58,9 @@ class TranscriberTest {
   }
 
   @Test
-  void generateThrowsIfEmpty() {
-    CompletableFuture<Transcript> future = transcriber.generate(
-      TranscriberMockUtil.mockChannel(Collections.emptyList()), devStyles);
+  void transcribeThrowsIfEmpty() {
+    CompletableFuture<Transcript> future = transcriber.transcribe(
+      TranscriberMockUtil.mockChannel(Collections.emptyList()), testStyle);
 
     assertInstanceOf(IllegalArgumentException.class, assertThrows(ExecutionException.class, future::get).getCause());
   }

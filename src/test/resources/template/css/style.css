@@ -828,6 +828,10 @@
   display: block;
 }
 
+.messages {
+  padding: 0 1rem 1.5rem 1rem;
+}
+
 .message__container {
   display: grid;
   grid-template-columns: auto 1fr;

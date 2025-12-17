@@ -15,8 +15,8 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Transcribes a {@link GuildMessageChannel} into a {@link Transcript} in HTML.
- * <br/>
+ * Transcribes a {@link GuildMessageChannel} into a {@link Transcript} as HTML.
+ * <p>
  * Uses <a href="https://github.com/casid/jte/">Java Template Engine</a> for HTML generation.
  */
 public class Transcriber {
@@ -38,20 +38,31 @@ public class Transcriber {
 
   /**
    * @param channel
-   *   The {@link GuildMessageChannel} to generate the Transcript for.
+   *   The {@link GuildMessageChannel} to transcribe.
    *
-   * @return A {@link CompletableFuture} of the generated {@link Transcript}.
+   * @return A {@link CompletableFuture} of the transcribed {@link Transcript}.
    *
    * @throws IllegalArgumentException
    *   If {@code channel} contains no messages.
    */
   @NonNull
-  public CompletableFuture<Transcript> generate(@NonNull GuildMessageChannel channel) {
-    return generate(channel, null);
+  public CompletableFuture<Transcript> transcribe(@NonNull GuildMessageChannel channel) {
+    return transcribe(channel, null);
   }
 
+  /**
+   * @param channel
+   *   The {@link GuildMessageChannel} to transcribe.
+   * @param testStyle
+   *   The path to the test {@code style.css}, only specified during testing.
+   *
+   * @return A {@link CompletableFuture} of the transcribed {@link Transcript}.
+   *
+   * @throws IllegalArgumentException
+   *   If {@code channel} contains no messages.
+   */
   @NonNull
-  CompletableFuture<Transcript> generate(@NonNull GuildMessageChannel channel, @Nullable String devStyles) {
+  CompletableFuture<Transcript> transcribe(@NonNull GuildMessageChannel channel, @Nullable String testStyle) {
     return channel.getIterableHistory().takeWhileAsync(Objects::nonNull).thenApply(messages -> {
       if (messages.isEmpty()) {
         throw new IllegalArgumentException("'#%s' contains no messages.".formatted(channel.getName()));
@@ -62,7 +73,7 @@ public class Transcriber {
       Map<String, Object> params = new HashMap<>();
       params.put("channel", channel);
       params.put("messages", messages.reversed());
-      params.put("devStyles", devStyles);
+      params.put("testStyle", testStyle);
 
       Utf8ByteOutput output = new Utf8ByteOutput();
       templateEngine.render("transcript.jte", params, output);

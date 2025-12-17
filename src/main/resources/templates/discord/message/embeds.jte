@@ -7,7 +7,6 @@
 @param Guild guild
 @param List<MessageEmbed> embeds
 
-<%-- TODO: Refactor --%>
 @for(MessageEmbed embed : embeds)
   <article
     style="border-left: 0.25rem solid ${"#%1$06X".formatted(embed.getColorRaw())};"
