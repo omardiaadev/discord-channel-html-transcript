@@ -105,7 +105,7 @@ dependencies {
 
 ## Development
 
-1. Run [TranscriberTest#generate()](src/test/java/dev/omardiaa/transcript/TranscriberTest.java).\
+1. Run [TranscriberTest#transcribe()](src/test/java/dev/omardiaa/transcript/TranscriberTest.java).\
    An HTML file will be created in:
     - **Windows:** `%USERPROFILE%\AppData\Local\Temp\discord-channel-html-transcript`
     - **macOS:** `/tmp/discord-channel-html-transcript`
@@ -115,7 +115,7 @@ dependencies {
 
 3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/templates/style.jte) when done.
 
-## Socials
+## Enjoying The Project? Give it A ⭐!
 
 <a href="https://fiverr.com/skywolfxp"><img alt="Fiverr" src="https://img.shields.io/badge/-1DBF73?style=for-the-badge&logo=fiverr&logoColor=FFF&logoSize=auto"/></a>
 <a href="https://reddit.com/user/omardiaadev"><img alt="Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=FFF&logoSize=auto"/></a>
