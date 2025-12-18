@@ -48,9 +48,10 @@ class TranscriberTest {
   @Test
   void transcribe() {
     GuildMessageChannel channel = TranscriberMockUtil.mockChannel(TranscriberTestUtil.createMessages());
+    File file = tempDir.resolve("transcript.html").toFile();
 
     transcriber.transcribe(channel, testStyle).thenAccept(
-      transcript -> assertDoesNotThrow(() -> transcript.toFile(tempDir.resolve("transcript.html").toFile())));
+      transcript -> assertDoesNotThrow(() -> transcript.toFile(file)));
   }
 
   @Test

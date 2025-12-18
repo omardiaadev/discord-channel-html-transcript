@@ -67,7 +67,7 @@ public class Transcriber {
    */
   @NonNull
   CompletableFuture<Transcript> transcribe(@NonNull GuildMessageChannel channel, @Nullable String testStyle) {
-    return channel.getIterableHistory().takeWhileAsync(Objects::nonNull).thenComposeAsync(messages -> {
+    return channel.getIterableHistory().takeWhileAsync(Objects::nonNull).thenCompose(messages -> {
       if (messages.isEmpty()) {
         return CompletableFuture.failedFuture(
           new IllegalArgumentException("'#%s' contains no messages.".formatted(channel.getName())));
