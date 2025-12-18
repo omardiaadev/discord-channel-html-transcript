@@ -1,9 +1,9 @@
-<h1 align="center">Discord Channel HTML Transcript</h1>
+<h1 align="center">discord-channel-html-transcript</h1>
 
 <p align="center"><strong>Discord Java library for generating shareable HTML archives of channels, preserving the native Discord styles</strong></p>
 
 <p align="center">
-    <a href="https://central.sonatype.com/artifact/dev.skywolfxp/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.skywolfxp/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
+    <a href="https://central.sonatype.com/artifact/dev.omardiaa/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.omardiaa/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
     <a href="https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/omardiaadev/discord-channel-html-transcript?style=flat-square&label=LICENSE&color=0055D2&labelColor=0055D2"></a>
 </p>
 
@@ -49,6 +49,13 @@ font that is the property of Discord Inc.**
     <li><strong>Referenced Command</strong></li>
 </ul>
 
+<ul>
+    <li><strong>To-Do:</strong></li>
+    <li>Cleanup CSS</li>
+    <li>Add List Markdown</li>
+    <li>Format Normal Links</li>
+</ul>
+
 ## Preview
 
 <details>
@@ -56,19 +63,19 @@ font that is the property of Discord Inc.**
     <ul>
         <li>
             <strong>ComponentsV2</strong>
-            <img src="assets/preview-1.png" alt="Preview #1"/>
+            <img src="docs/images/preview-1.png" alt="ComponentsV2"/>
         </li>
         <li>
             <strong>Embeds & Other Components</strong>
-            <img src="assets/preview-2.png" alt="Preview #2"/>
+            <img src="docs/images/preview-2.png" alt="Embeds & Other Components"/>
         </li>
         <li>
             <strong>Message</strong>
-            <img src="assets/preview-3.png" alt="Preview #3"/>
+            <img src="docs/images/preview-3.png" alt="Message"/>
         </li>
         <li>
             <strong>Full Preview</strong>
-            <img src="assets/preview-4.png" alt="Preview #4"/>
+            <img src="docs/images/preview-4.png" alt="Full Preview"/>
         </li>
     </ul>
 </details>
