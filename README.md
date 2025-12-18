@@ -1,10 +1,10 @@
 <h1 align="center">discord-channel-html-transcript</h1>
 
-<p align="center"><strong>Discord Java library for generating shareable HTML archives of channels, preserving the native Discord styles</strong></p>
+<p align="center"><strong>Discord Java library for generating HTML archives of channels, preserving the native Discord styles</strong></p>
 
 <p align="center">
-    <a href="https://central.sonatype.com/artifact/dev.omardiaa/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.omardiaa/discord-channel-html-transcript?style=flat-square&label=MAVEN&color=0055D2&labelColor=0055D2"></a>
-    <a href="https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/omardiaadev/discord-channel-html-transcript?style=flat-square&label=LICENSE&color=0055D2&labelColor=0055D2"></a>
+    <a href="https://central.sonatype.com/artifact/dev.omardiaa/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.omardiaa/discord-channel-html-transcript?label=Maven+Version&color=0055D2&labelColor=0055D2"/></a>
+    <a href="https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/omardiaadev/discord-channel-html-transcript?label=License&color=0055D2&labelColor=0055D2"/></a>
 </p>
 
 ## About
@@ -24,15 +24,13 @@ Uses [**Java Discord API**](https://github.com/discord-jda/JDA)
         <li><a href="#preview">Preview</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#development">Development</a></li>
-        <li><a href="#socials">Socials</a></li>
     </ul>
 </details>
 
 ## Legal Compliance
 
-> [!IMPORTANT]
-> **This project utilizes the [gg sans](src/main/resources/font/ggsansvf-VF.woff)
-font that is the property of Discord Inc.**
+> [!NOTE]
+> This project utilizes the [gg sans](src/main/resources/font/ggsansvf-VF.woff) font that is the property of Discord Inc.
 
 ## Features
 
@@ -54,7 +52,7 @@ font that is the property of Discord Inc.**
     <ul>
         <li>Cleanup CSS</li>
         <li>Add List Markdown</li>
-        <li>Format Normal Links</li>    
+        <li>Format Normal Links</li>
     </ul>
 </ul>
 
@@ -92,39 +90,30 @@ font that is the property of Discord Inc.**
 
 ```xml
 
-<dependencies>
-  <dependency>
-    <groupId>dev.omardiaa</groupId>
-    <artifactId>discord-channel-html-transcript</artifactId>
-    <version>4.0.0</version>
-  </dependency>
-</dependencies>
+<dependency>
+  <groupId>dev.omardiaa</groupId>
+  <artifactId>discord-channel-html-transcript</artifactId>
+  <version>4.0.0</version>
+</dependency>
 ```
 
 ```kts
 
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  implementation("dev.omardiaa:discord-channel-html-transcript:4.0.0")
-}
+implementation("dev.omardiaa:discord-channel-html-transcript:4.0.0")
 ```
 
 ## Development
 
-1. Run [TranscriberTest#transcribe()](src/test/java/dev/omardiaa/transcript/TranscriberTest.java).\
-   An HTML file will be created in:
-    - **Windows:** `%USERPROFILE%\AppData\Local\Temp\discord-channel-html-transcript`
-    - **macOS:** `/tmp/discord-channel-html-transcript`
-    - **Linux:** `/tmp/discord-channel-html-transcript`
+1. Run [TranscriberTest#transcribe()](src/test/java/dev/omardiaa/transcript/TranscriberTest.java), an HTML file will appear in:
+    - **Windows:** `%TEMP%\discord-channel-html-transcript\transcript.html`
+    - **macOS:** `/tmp/discord-channel-html-transcript/transcript.html`
+    - **Linux:** `/tmp/discord-channel-html-transcript/transcript.html`
 
 2. Modify CSS in [style.css](src/test/resources/template/css/style.css) for live updates during development.
 
 3. Copy CSS in [style.css](src/test/resources/template/css/style.css) to [style.jte](src/main/resources/templates/style.jte) when done.
 
-## Enjoying The Project? Give it A ⭐!
+## Enjoying My Work? Give it A Star!
 
 <a href="https://fiverr.com/skywolfxp"><img alt="Fiverr" src="https://img.shields.io/badge/-1DBF73?style=for-the-badge&logo=fiverr&logoColor=FFF&logoSize=auto"/></a>
 <a href="https://reddit.com/user/omardiaadev"><img alt="Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=FFF&logoSize=auto"/></a>
