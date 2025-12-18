@@ -7,8 +7,7 @@
       border: 0 solid;
     }
 
-    html,
-    :host {
+    html, :host {
       line-height: 1.5;
       -webkit-text-size-adjust: 100%;
       tab-size: 4;
@@ -25,7 +24,7 @@
     hr {
       height: 0;
       color: inherit;
-      border-top-width: 1px;
+      border-top-width: 0.0625rem;
     }
 
     abbr:where([title]) {
@@ -42,13 +41,12 @@
       text-decoration: inherit;
     }
 
-    b,
-    strong {
+    b, strong {
       font-weight: bolder;
     }
 
     code, kbd, samp, pre {
-      font-size: 1em;
+      font-size: 1rem;
     }
 
     small {
@@ -63,7 +61,7 @@
     }
 
     sub {
-      bottom: -0.25em;
+      bottom: -0.25rem;
     }
 
     sup {
@@ -113,11 +111,11 @@
     }
 
     :where(select:is([multiple], [size])) optgroup option {
-      padding-inline-start: 20px;
+      padding-inline-start: 1.25rem;
     }
 
     ::file-selector-button {
-      margin-inline-end: 4px;
+      margin-inline-end: 0.25rem;
     }
 
     ::placeholder {
@@ -245,7 +243,7 @@
     width: 100%;
     height: 28px;
     color: var(--text-normal);
-    border-top: 1px solid var(--border-subtle);
+    border-top: 0.0625rem solid var(--border-subtle);
     background-color: var(--background-base-lowest);
   }
 
@@ -287,7 +285,7 @@
     align-items: center;
     height: 46px;
     padding: 0.5rem 0.75rem;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 0.0625rem solid var(--border-subtle);
     background-color: var(--header-bar-background);
     gap: 0.5rem;
   }
@@ -303,7 +301,7 @@
     line-height: 1.125rem;
     display: flex;
     align-items: center;
-    height: 1.125rem;
+    height: 18px;
     margin-bottom: 0.25rem;
     color: var(--header-primary);
     gap: 0.25rem;
@@ -312,8 +310,8 @@
 
   .reference__spine {
     margin: 0.5rem 0.25rem 0.25rem 1.125rem;
-    border-top: 2px solid var(--spine-default);
-    border-left: 2px solid var(--spine-default);
+    border-top: 0.125rem solid var(--spine-default);
+    border-left: 0.125rem solid var(--spine-default);
     border-radius: 0.5rem 0 0 0;
     grid-column: 1;
   }
@@ -341,7 +339,7 @@
     display: flex;
     overflow: hidden;
     align-items: center;
-    max-height: 1.125rem;
+    max-height: 18px;
     opacity: 0.64;
     color: var(--header-primary);
     gap: 0.25rem;
@@ -359,7 +357,7 @@
 
   .reference__interaction__mention {
     font-weight: 500;
-    padding: 0 2px;
+    padding: 0 0.125rem;
     color: var(--text-link);
     border-radius: 0.1875rem;
     background-color: rgba(88, 101, 242, 0.3);
@@ -398,7 +396,7 @@
     transition: background-color 170ms ease;
     text-wrap: nowrap;
     color: var(--button-secondary-text);
-    border-radius: 8px;
+    border-radius: 0.5rem;
   }
 
   .button[aria-disabled="true"] {
@@ -465,13 +463,13 @@
     align-items: center;
     width: 90%;
     max-width: 400px;
-    padding: 8px;
+    padding: 0.5rem;
     cursor: pointer;
     color: var(--text-secondary);
-    border: 1px solid var(--border-normal);
-    border-radius: 8px;
+    border: 0.0625rem solid var(--border-normal);
+    border-radius: 0.5rem;
     background-color: var(--input-background);
-    gap: 8px;
+    gap: 0.5rem;
     grid-template-columns: 1fr auto;
   }
 
@@ -486,7 +484,7 @@
     flex-direction: column;
     max-width: min(600px, 100%);
     padding: 1rem;
-    border: 1px solid var(--border-subtle);
+    border: 0.0625rem solid var(--border-subtle);
     border-radius: 0.5rem;
     background: var(--background-surface-high);
     gap: 0.5rem;
@@ -512,7 +510,7 @@
   }
 
   .separator {
-    border-bottom: 1px solid oklch(0.679 0.012 286.086 / 0.2);
+    border-bottom: 0.0625rem solid oklch(0.679 0.012 286.086 / 0.2);
   }
 
   .separator[aria-hidden="true"] {
@@ -543,7 +541,7 @@
     max-width: 100%;
     margin-top: 0.5rem;
     padding: 1rem;
-    border: 1px solid var(--border-subtle);
+    border: 0.0625rem solid var(--border-subtle);
     border-radius: 0.5rem;
     background-color: var(--background-surface-high);
     gap: 0.5rem;
@@ -590,7 +588,7 @@
     width: max-content;
     max-width: 520px;
     padding: 0.125rem 1rem 1rem 0.75rem;
-    border: 1px solid var(--border-subtle);
+    border: 0.0625rem solid var(--border-subtle);
     border-left: 0.25rem solid var(--border-normal);
     border-radius: 0.25rem;
     background: var(--background-surface-high);
@@ -829,6 +827,10 @@
     display: block;
   }
 
+  .messages {
+    padding: 0 1rem 1.5rem 1rem;
+  }
+
   .message__container {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -858,8 +860,8 @@
     font-size: 0.6875rem;
     line-height: 1.375rem;
     z-index: 1;
-    width: 2.5rem;
-    height: 1.375rem;
+    width: 40px;
+    height: 22px;
     opacity: 0;
     color: var(--text-muted);
   }
@@ -884,7 +886,7 @@
   /* Message */
 
   .timestamp {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     position: absolute;
     display: none;
@@ -896,7 +898,7 @@
     color: var(--text-normal);
     border-radius: 0.5rem;
     background-color: var(--background-surface-high);
-    box-shadow: inset 0 0 0 1px var(--border-subtle), 0 12px 24px 0 hsl(none 0% 0%/0.24);
+    box-shadow: inset 0 0 0 0.0625rem var(--border-subtle), 0 0.75rem 1.5rem 0 hsl(none 0% 0%/0.24);
     gap: 0.5rem;
   }
 
@@ -904,8 +906,8 @@
     position: absolute;
     top: calc(100% - 3px);
     inset-inline-start: 50%;
-    -webkit-margin-start: -8px;
-    margin-inline-start: -8px;
+    -webkit-margin-start: -0.5rem;
+    margin-inline-start: -0.5rem;
   }
 
   .timestamp__caret-fill {
@@ -923,7 +925,7 @@
     flex-flow: row nowrap;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     object-fit: cover;
   }
 
@@ -933,7 +935,7 @@
 
   .image__container {
     display: grid;
-    gap: 4px;
+    gap: 0.25rem;
   }
 
   .image__container[data-count="1"] {
@@ -1036,7 +1038,7 @@
   code.markup {
     font-size: 0.875rem;
     line-height: 1.125rem;
-    border: 1px solid var(--border-normal);
+    border: 0.0625rem solid var(--border-normal);
     border-radius: 0.25rem;
     background: var(--background-code);
   }
