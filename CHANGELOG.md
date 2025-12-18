@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.0.0 (WIP)
+## 4.0.0
 
 ### Changed
 
@@ -8,6 +8,11 @@
 - Add Discord Components V2.
 - Add message formatting inside embeds.
 - Add `style.css` to test resources for modification during testing.
+- Update the Trancript to be returned in a CompletableFuture.
+
+### Fixed
+
+- Fix handling of the generated tanscript output.
 
 ## 3.0.0
 
