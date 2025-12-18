@@ -51,9 +51,11 @@ font that is the property of Discord Inc.**
 
 <ul>
     <li><strong>To-Do:</strong></li>
-    <li>Cleanup CSS</li>
-    <li>Add List Markdown</li>
-    <li>Format Normal Links</li>
+    <ul>
+        <li>Cleanup CSS</li>
+        <li>Add List Markdown</li>
+        <li>Format Normal Links</li>    
+    </ul>
 </ul>
 
 ## Preview
