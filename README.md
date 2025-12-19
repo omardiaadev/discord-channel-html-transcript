@@ -3,7 +3,7 @@
 <p align="center"><strong>Discord Java library for generating HTML archives of channels, preserving the native Discord styles</strong></p>
 
 <p align="center">
-    <a href="https://central.sonatype.com/artifact/dev.omardiaa/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.omardiaa/discord-channel-html-transcript?label=Maven+Version&color=0055D2&labelColor=0055D2"/></a>
+    <a href="https://central.sonatype.com/artifact/dev.omardiaa/discord-channel-html-transcript"><img alt="Maven Version" src="https://img.shields.io/maven-central/v/dev.omardiaa/discord-channel-html-transcript?label=Maven&color=0055D2&labelColor=0055D2"/></a>
     <a href="https://github.com/omardiaadev/discord-channel-html-transcript/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/omardiaadev/discord-channel-html-transcript?label=License&color=0055D2&labelColor=0055D2"/></a>
 </p>
 
